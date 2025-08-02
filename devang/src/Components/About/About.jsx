@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import './About.css';
 import theme_pattern from '../../assets/theme_pattern.svg';
 import dhruv from '../../assets/dhruv.JPG';
@@ -21,73 +22,173 @@ const About = () => {
     { name: 'C++', icon: '🔷', color: '#00599C' }
   ];
 
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.3
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { y: 50, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1,
+      transition: {
+        duration: 0.6,
+        ease: "easeOut"
+      }
+    }
+  };
+
+  const skillVariants = {
+    hidden: { scale: 0, opacity: 0 },
+    visible: {
+      scale: 1,
+      opacity: 1,
+      transition: {
+        duration: 0.5,
+        ease: "easeOut"
+      }
+    }
+  };
+
   return (
-    <div id='about' className='about'>
-      <div className="about-title">
-        <h1>About me</h1>
-        <img src={theme_pattern} alt="Theme Pattern" />
-      </div>
+    <section id='about' className='about-section'>
+      <div className="about-container">
+        <motion.div 
+          className="about-title"
+          initial={{ y: 50, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true }}
+        >
+          <h1 className="gradient-text">About me</h1>
+          <img src={theme_pattern} alt="Theme Pattern" />
+        </motion.div>
 
-      <div className="about-sections">
-        <div className="about-left">
-          <img src={dhruv} alt="dhruv" />
-        </div>
-
-        <div className="about-right">
-          <div className="about-para">
-            <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Inventore accusantium eaque numquam quos odio ipsam deserunt ad suscipit optio cum, et temporibus perspiciatis nemo impedit quis eligendi perferendis autem excepturi!</p>
-            <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Exercitationem beatae officiis deleniti vel nisi unde provident cupiditate veritatis in ab.</p>
-          </div>
-        </div>
-      </div>
-
-      <div className="about-skills">
-        <h3>Skills</h3>
-        <div className="skills-sections">
-          <div className="skills-section">
-            <h4>Frontend Development</h4>
-            <div className="skills-grid">
-              {frontendSkills.map((skill, index) => (
-                <div key={index} className="skill-item" style={{'--skill-color': skill.color}}>
-                  <span className="skill-icon">{skill.icon}</span>
-                  <span className="skill-name">{skill.name}</span>
-                </div>
-              ))}
+        <motion.div 
+          className="about-content"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true }}
+        >
+          <motion.div className="about-profile" variants={itemVariants}>
+            <div className="profile-container glass">
+              <img src={dhruv} alt="Devang Singh" />
+              <div className="profile-glow"></div>
             </div>
-          </div>
-          
-          <div className="skills-section">
-            <h4>Backend Development</h4>
-            <div className="skills-grid">
-              {backendSkills.map((skill, index) => (
-                <div key={index} className="skill-item" style={{'--skill-color': skill.color}}>
-                  <span className="skill-icon">{skill.icon}</span>
-                  <span className="skill-name">{skill.name}</span>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </div>
+          </motion.div>
 
-      <div className="about-achievements">
-        <div className="about-achievement">
-            <h1>1+</h1>
+          <motion.div className="about-text" variants={itemVariants}>
+            <div className="about-description glass">
+              <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Inventore accusantium eaque numquam quos odio ipsam deserunt ad suscipit optio cum, et temporibus perspiciatis nemo impedit quis eligendi perferendis autem excepturi!</p>
+              <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Exercitationem beatae officiis deleniti vel nisi unde provident cupiditate veritatis in ab.</p>
+            </div>
+          </motion.div>
+        </motion.div>
+
+        <motion.div 
+          className="about-skills"
+          initial={{ y: 50, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.3 }}
+          viewport={{ once: true }}
+        >
+          <h3 className="gradient-text">Skills</h3>
+          <div className="skills-sections">
+            <motion.div 
+              className="skills-section glass"
+              variants={containerVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+            >
+              <h4>Frontend Development</h4>
+              <div className="skills-grid">
+                {frontendSkills.map((skill, index) => (
+                  <motion.div 
+                    key={index} 
+                    className="skill-item" 
+                    style={{'--skill-color': skill.color}}
+                    variants={skillVariants}
+                    whileHover={{ scale: 1.1, y: -5 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    <span className="skill-icon">{skill.icon}</span>
+                    <span className="skill-name">{skill.name}</span>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
+            
+            <motion.div 
+              className="skills-section glass"
+              variants={containerVariants}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+            >
+              <h4>Backend Development</h4>
+              <div className="skills-grid">
+                {backendSkills.map((skill, index) => (
+                  <motion.div 
+                    key={index} 
+                    className="skill-item" 
+                    style={{'--skill-color': skill.color}}
+                    variants={skillVariants}
+                    whileHover={{ scale: 1.1, y: -5 }}
+                    whileTap={{ scale: 0.95 }}
+                  >
+                    <span className="skill-icon">{skill.icon}</span>
+                    <span className="skill-name">{skill.name}</span>
+                  </motion.div>
+                ))}
+              </div>
+            </motion.div>
+          </div>
+        </motion.div>
+
+        <motion.div 
+          className="about-achievements glass"
+          initial={{ y: 50, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          transition={{ duration: 0.8, delay: 0.5 }}
+          viewport={{ once: true }}
+        >
+          <motion.div 
+            className="about-achievement"
+            whileHover={{ scale: 1.05 }}
+            transition={{ type: "spring", stiffness: 300 }}
+          >
+            <h1 className="gradient-text">1+</h1>
             <p>YEARS OF EXPERIENCE</p>
-        </div>
-        <hr />
-        <div className="about-achievement">
-            <h1>20+</h1>
+          </motion.div>
+          <hr />
+          <motion.div 
+            className="about-achievement"
+            whileHover={{ scale: 1.05 }}
+            transition={{ type: "spring", stiffness: 300 }}
+          >
+            <h1 className="gradient-text">20+</h1>
             <p>PROJECTS COMPLETED</p>
-        </div>
-        <hr />
-        <div className="about-achievement">
-            <h1>10+</h1>
+          </motion.div>
+          <hr />
+          <motion.div 
+            className="about-achievement"
+            whileHover={{ scale: 1.05 }}
+            transition={{ type: "spring", stiffness: 300 }}
+          >
+            <h1 className="gradient-text">10+</h1>
             <p>HAPPY CLIENTS</p>
-        </div>
-        <hr />
+          </motion.div>
+        </motion.div>
       </div>
-    </div>
+    </section>
   );
 }
 
