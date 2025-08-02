@@ -57,7 +57,7 @@ const onSubmit = async (event) => {
                 <input type="text"  placeholder='Enter Your Name' name='name'/>
                 <label htmlFor="">Your Email</label>
                 <input type="email" placeholder='Enter your Email' name='email' />
-                <label htmlFor="">Wriet your message here</label>
+                <label htmlFor="">Write your message here</label>
                 <textarea name="message"  rows="8" placeholder='Enter your Message'></textarea>
                 <button type='submit' className="contact-submit">Submit Now</button>
             </form>
