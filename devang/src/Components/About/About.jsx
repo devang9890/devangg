@@ -4,6 +4,23 @@ import theme_pattern from '../../assets/theme_pattern.svg';
 import dhruv from '../../assets/dhruv.JPG';
 
 const About = () => {
+  const frontendSkills = [
+    { name: 'React', icon: '⚛️', color: '#61DAFB' },
+    { name: 'Next.js', icon: '⚫', color: '#000000' },
+    { name: 'JavaScript', icon: '🟡', color: '#F7DF1E' },
+    { name: 'TypeScript', icon: '🔵', color: '#3178C6' },
+    { name: 'HTML5', icon: '🟠', color: '#E34F26' },
+    { name: 'Tailwind CSS', icon: '🔷', color: '#06B6D4' }
+  ];
+
+  const backendSkills = [
+    { name: 'Node.js', icon: '🟢', color: '#339933' },
+    { name: 'Express.js', icon: '⚪', color: '#000000' },
+    { name: 'Python', icon: '🐍', color: '#3776AB' },
+    { name: 'Java', icon: '☕', color: '#ED8B00' },
+    { name: 'C++', icon: '🔷', color: '#00599C' }
+  ];
+
   return (
     <div id='about' className='about'>
       <div className="about-title">
@@ -21,27 +38,38 @@ const About = () => {
             <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Inventore accusantium eaque numquam quos odio ipsam deserunt ad suscipit optio cum, et temporibus perspiciatis nemo impedit quis eligendi perferendis autem excepturi!</p>
             <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Exercitationem beatae officiis deleniti vel nisi unde provident cupiditate veritatis in ab.</p>
           </div>
+        </div>
+      </div>
 
-          <div className="about-skills">
-            <div className="about-skill">
-              <p>FrontEnd Development</p>
-              <hr style={{ width: "50%" }} />
+      <div className="about-skills">
+        <h3>Skills</h3>
+        <div className="skills-sections">
+          <div className="skills-section">
+            <h4>Frontend Development</h4>
+            <div className="skills-grid">
+              {frontendSkills.map((skill, index) => (
+                <div key={index} className="skill-item" style={{'--skill-color': skill.color}}>
+                  <span className="skill-icon">{skill.icon}</span>
+                  <span className="skill-name">{skill.name}</span>
+                </div>
+              ))}
             </div>
-            <div className="about-skill">
-              <p>Backend Development</p>
-              <hr style={{ width: "50%" }} />
-            </div>
-            <div className="about-skill">
-              <p>ReactJS Development</p>
-              <hr style={{ width: "50%" }} />
-            </div>
-            <div className="about-skill">
-              <p>JavaScript</p>
-              <hr style={{ width: "50%" }} />
+          </div>
+          
+          <div className="skills-section">
+            <h4>Backend Development</h4>
+            <div className="skills-grid">
+              {backendSkills.map((skill, index) => (
+                <div key={index} className="skill-item" style={{'--skill-color': skill.color}}>
+                  <span className="skill-icon">{skill.icon}</span>
+                  <span className="skill-name">{skill.name}</span>
+                </div>
+              ))}
             </div>
           </div>
         </div>
       </div>
+
       <div className="about-achievements">
         <div className="about-achievement">
             <h1>1+</h1>
