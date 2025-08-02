@@ -4,6 +4,7 @@ import './AnimatedBackground.css';
 
 const AnimatedBackground = () => {
   const [particles, setParticles] = useState([]);
+  const [twinklingStars, setTwinklingStars] = useState([]);
 
   useEffect(() => {
     const createParticles = () => {
@@ -21,13 +22,36 @@ const AnimatedBackground = () => {
       setParticles(newParticles);
     };
 
+    const createTwinklingStars = () => {
+      const newTwinklingStars = [];
+      // Increased number of twinkling stars from 30 to 80
+      for (let i = 0; i < 80; i++) {
+        newTwinklingStars.push({
+          id: i,
+          x: Math.random() * window.innerWidth,
+          y: Math.random() * window.innerHeight,
+          size: Math.random() * 4 + 1, // Slightly larger stars
+          delay: Math.random() * 5,
+          duration: Math.random() * 4 + 2, // Varied duration for more natural effect
+        });
+      }
+      setTwinklingStars(newTwinklingStars);
+    };
+
     createParticles();
-    window.addEventListener('resize', createParticles);
-    return () => window.removeEventListener('resize', createParticles);
+    createTwinklingStars();
+    
+    window.addEventListener('resize', () => {
+      createParticles();
+      createTwinklingStars();
+    });
+    
+    return () => window.removeEventListener('resize', () => {});
   }, []);
 
   return (
     <div className="animated-background">
+      {/* Floating particles */}
       {particles.map((particle) => (
         <motion.div
           key={particle.id}
@@ -52,7 +76,31 @@ const AnimatedBackground = () => {
           }}
         />
       ))}
-      
+
+      {/* Twinkling stars - increased count and improved animation */}
+      {twinklingStars.map((star) => (
+        <motion.div
+          key={`twinkling-${star.id}`}
+          className="twinkling-star"
+          style={{
+            left: star.x,
+            top: star.y,
+            width: star.size,
+            height: star.size,
+          }}
+          animate={{
+            opacity: [0.1, 1, 0.1],
+            scale: [0.5, 1.5, 0.5],
+          }}
+          transition={{
+            duration: star.duration,
+            delay: star.delay,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        />
+      ))}
+
       {/* Gradient orbs */}
       <motion.div
         className="gradient-orb orb-1"

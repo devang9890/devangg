@@ -6,6 +6,8 @@
   position: relative;
   overflow: hidden;
   width: 100%;
+  visibility: visible !important;
+  opacity: 1 !important;
 }
 
 .hero-container {
@@ -14,15 +16,21 @@
   max-width: 1200px;
   padding: 0 40px;
   z-index: 10;
+  visibility: visible !important;
+  opacity: 1 !important;
 }
 
 .hero-profile {
   margin-bottom: 50px;
+  visibility: visible !important;
+  opacity: 1 !important;
 }
 
 .profile-image-container {
   position: relative;
   display: inline-block;
+  visibility: visible !important;
+  opacity: 1 !important;
 }
 
 .hero-profile-img {
@@ -34,6 +42,8 @@
   background: linear-gradient(45deg, #DF8908, #B415FF) border-box;
   position: relative;
   z-index: 2;
+  visibility: visible !important;
+  opacity: 1 !important;
 }
 
 .profile-glow {
@@ -66,6 +76,9 @@
   font-weight: 700;
   margin-bottom: 30px;
   line-height: 1.1;
+  visibility: visible !important;
+  opacity: 1 !important;
+  display: block !important;
 }
 
 .hero-title .highlight {
@@ -85,6 +98,9 @@
   max-width: 700px;
   margin-left: auto;
   margin-right: auto;
+  visibility: visible !important;
+  opacity: 1 !important;
+  display: block !important;
 }
 
 .hero-actions {
@@ -92,6 +108,8 @@
   gap: 30px;
   justify-content: center;
   flex-wrap: wrap;
+  visibility: visible !important;
+  opacity: 1 !important;
 }
 
 .hero-connect, .hero-resume {
@@ -108,40 +126,103 @@
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.1);
   min-width: 200px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  visibility: visible !important;
+  opacity: 1 !important;
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
 }
 
 .hero-connect {
   background: linear-gradient(135deg, #DF8908 0%, #B415FF 100%);
+  border: 2px solid transparent;
+  background-clip: padding-box;
+}
+
+.hero-connect::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, #DF8908 0%, #B415FF 100%);
+  border-radius: 50px;
+  z-index: -1;
+  animation: border-glow 2s ease-in-out infinite;
+}
+
+@keyframes border-glow {
+  0%, 100% {
+    opacity: 0.8;
+  }
+  50% {
+    opacity: 1;
+  }
 }
 
 .hero-resume {
   background: rgba(255, 255, 255, 0.1);
   border: 2px solid rgba(255, 255, 255, 0.2);
+  position: relative;
+}
+
+.hero-resume::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  background: linear-gradient(45deg, #DF8908, #B415FF, #FF6B6B, #DF8908);
+  border-radius: 50px;
+  z-index: -1;
+  background-size: 400% 400%;
+  animation: border-rotate 3s linear infinite;
+}
+
+@keyframes border-rotate {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 .hero-connect:hover, .hero-resume:hover {
-  transform: translateY(-5px);
+  transform: translateY(-5px) scale(1.02);
   box-shadow: 0 20px 40px rgba(223, 137, 8, 0.4);
 }
 
-.hero-connect::before, .hero-resume::before {
+.hero-connect::after, .hero-resume::after {
   content: '';
   position: absolute;
   top: 0;
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-  transition: left 0.5s;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.6s;
 }
 
-.hero-connect:hover::before, .hero-resume:hover::before {
+.hero-connect:hover::after, .hero-resume:hover::after {
   left: 100%;
 }
 
 .anchor-link {
   color: white;
   text-decoration: none;
+  display: block;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 /* Glass morphism effect */

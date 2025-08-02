@@ -1,45 +1,17 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import { motion } from 'framer-motion'
-import { gsap } from 'gsap'
 import './Hero.css'
 import dhruv from '../../assets/dhruv.jpg'
 import AnchorLink from 'react-anchor-link-smooth-scroll'
 
 const Hero = () => {
-  useEffect(() => {
-    // GSAP animations
-    gsap.from('.hero-title', {
-      duration: 1.5,
-      y: 100,
-      opacity: 0,
-      ease: 'power3.out',
-      delay: 0.5
-    });
-
-    gsap.from('.hero-subtitle', {
-      duration: 1.5,
-      y: 50,
-      opacity: 0,
-      ease: 'power3.out',
-      delay: 1
-    });
-
-    gsap.from('.hero-actions', {
-      duration: 1,
-      y: 30,
-      opacity: 0,
-      ease: 'power3.out',
-      delay: 1.5
-    });
-  }, []);
-
   return (
     <section id='home' className='hero-section'>
       <div className="hero-container">
         <motion.div
           initial={{ scale: 0.8, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
-          transition={{ duration: 1, ease: "easeOut" }}
+          transition={{ duration: 1, ease: "easeOut", delay: 0.5 }}
           className="hero-profile"
         >
           <div className="profile-image-container">
@@ -52,7 +24,7 @@ const Hero = () => {
           className="hero-title gradient-text"
           initial={{ y: 50, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 1, delay: 0.3 }}
+          transition={{ duration: 1, delay: 1 }}
         >
           I'm <span className="highlight">Devang Singh</span>
         </motion.h1>
@@ -61,7 +33,7 @@ const Hero = () => {
           className="hero-subtitle"
           initial={{ y: 30, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 1, delay: 0.6 }}
+          transition={{ duration: 1, delay: 1.3 }}
         >
           FullStack Developer & B.Tech CSE Student from India
         </motion.p>
@@ -70,7 +42,7 @@ const Hero = () => {
           className="hero-actions"
           initial={{ y: 30, opacity: 0 }}
           animate={{ y: 0, opacity: 1 }}
-          transition={{ duration: 1, delay: 0.9 }}
+          transition={{ duration: 1, delay: 1.6 }}
         >
           <motion.div 
             className="hero-connect glass"
