@@ -73,20 +73,20 @@
 .services-format h3 {
   font-size: 1.5rem;
   font-weight: 600;
-  color: #DF8908;
+  color: var(--accent-color);
 }
 
 .services-format h2 {
   font-size: 2.2rem;
   font-weight: 700;
-  background: linear-gradient(270deg, #DF8908 50%, #B415FF 100%);
+  background: linear-gradient(270deg, var(--accent-color) 50%, var(--accent-secondary) 100%);
   background-clip: text;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
 .services-format p {
-  color: #d4d4d4;
+  color: var(--text-primary);
   font-size: 1.1rem;
   line-height: 1.6;
   max-width: 100%;
@@ -100,7 +100,7 @@
 }
 
 .service-full-desc p {
-  color: #d4d4d4;
+  color: var(--text-primary);
   font-size: 1rem;
   line-height: 1.6;
   max-width: 100%;
@@ -124,7 +124,7 @@
   margin-top: 20px;
   cursor: pointer;
   transition: all 0.3s ease;
-  color: #DF8908;
+  color: var(--accent-color);
   font-weight: 500;
   padding: 12px 20px;
   border-radius: 25px;
@@ -151,7 +151,7 @@
 
 .servies-readmore:hover {
   transform: translateX(5px);
-  color: #B415FF;
+  color: var(--accent-secondary);
   background: rgba(180, 21, 255, 0.1);
   border-color: rgba(180, 21, 255, 0.3);
   box-shadow: 0 5px 15px rgba(223, 137, 8, 0.3);

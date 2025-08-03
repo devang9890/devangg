@@ -18,7 +18,7 @@
 .footer-top-left p {
   font-size: 1.3rem;
   font-weight: 400;
-  color: #d4d4d4;
+  color: var(--text-primary);
   line-height: 1.6;
 }
 
@@ -44,7 +44,7 @@
   outline: none;
   border: none;
   background: transparent;
-  color: #d4d4d4;
+  color: var(--text-primary);
   font-family: inherit;
   font-size: 1.1rem;
   width: 100%;
@@ -63,7 +63,7 @@
   cursor: pointer;
   transition: 0.3s;
   border: none;
-  color: white;
+  color: var(--text-secondary);
   position: relative;
   overflow: hidden;
 }
@@ -88,7 +88,7 @@
   justify-content: space-between;
   align-items: center;
   font-size: 1.1rem;
-  color: #d4d4d4;
+  color: var(--text-primary);
   padding-top: 30px;
   border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
@@ -99,17 +99,17 @@
 }
 
 .footer-bottom-right a {
-  color: #d4d4d4;
+  color: var(--text-primary);
   text-decoration: none;
   transition: color 0.3s ease;
 }
 
 .footer-bottom-right a:hover {
-  color: #DF8908;
+  color: var(--accent-color);
 }
 
 .footer-email-input:hover {
-  border: 2px solid #DF8908;
+  border: 2px solid var(--accent-color);
   transform: translateY(-2px);
   box-shadow: 0 10px 30px rgba(223, 137, 8, 0.2);
 }

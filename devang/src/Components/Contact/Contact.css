@@ -56,7 +56,7 @@
 
 .contact-left p {
   max-width: 600px;
-  color: #d8d8d8;
+  color: var(--text-primary);
   font-size: 1.2rem;
   line-height: 1.6;
 }
@@ -66,7 +66,7 @@
   flex-direction: column;
   gap: 30px;
   font-size: 1.2rem;
-  color: #d8d8d8;
+  color: var(--text-primary);
 }
 
 .contact-detail {
@@ -83,7 +83,7 @@
 
 .contact-detail:hover {
   transform: translateY(-2px);
-  border-color: #DF8908;
+  border-color: var(--accent-color);
   box-shadow: 0 10px 30px rgba(223, 137, 8, 0.2);
 }
 
@@ -101,7 +101,7 @@
 }
 
 .contact-right label {
-  color: #d8d8d8;
+  color: var(--text-primary);
   font-size: 1.1rem;
   font-weight: 500;
   margin-bottom: 10px;
@@ -116,7 +116,7 @@
   background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.1);
-  color: #d8d8d8;
+  color: var(--text-primary);
   font-family: inherit;
   font-size: 1rem;
   transition: all 0.3s ease;
@@ -124,7 +124,7 @@
 
 .contact-right input:focus {
   outline: none;
-  border-color: #DF8908;
+  border-color: var(--accent-color);
   box-shadow: 0 0 0 3px rgba(223, 137, 8, 0.1);
 }
 
@@ -140,7 +140,7 @@
   background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.1);
-  color: #d8d8d8;
+  color: var(--text-primary);
   font-family: inherit;
   font-size: 1rem;
   min-height: 150px;
@@ -150,7 +150,7 @@
 
 .contact-right textarea:focus {
   outline: none;
-  border-color: #DF8908;
+  border-color: var(--accent-color);
   box-shadow: 0 0 0 3px rgba(223, 137, 8, 0.1);
 }
 
@@ -160,9 +160,9 @@
 
 .contact-submit {
   border: none;
-  color: white;
+  color: var(--text-secondary);
   border-radius: 50px;
-  background: linear-gradient(264deg, #df8908 -5.09%, #b415ff 106.28%);
+  background: linear-gradient(264deg, var(--accent-color) -5.09%, var(--accent-secondary) 106.28%);
   font-size: 1.2rem;
   font-weight: 600;
   padding: 20px 50px;
