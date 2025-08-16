@@ -86,8 +86,8 @@ const About = () => {
 
           <motion.div className="about-text" variants={itemVariants}>
             <div className="about-description glass">
-              <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Inventore accusantium eaque numquam quos odio ipsam deserunt ad suscipit optio cum, et temporibus perspiciatis nemo impedit quis eligendi perferendis autem excepturi!</p>
-              <p>Lorem, ipsum dolor sit amet consectetur adipisicing elit. Exercitationem beatae officiis deleniti vel nisi unde provident cupiditate veritatis in ab.</p>
+              <p>Hi, I’m Devang 👋 — a B.Tech CSE student at Bhagwan Parshuram Institute of Technology (GGSIPU). I love turning ideas into real-world applications through Web Development and sharpening my problem-solving skills with DSA. Whether it’s crafting smooth user experiences or optimizing algorithms, I enjoy learning, experimenting, and building projects that make a difference.!</p>
+          
             </div>
           </motion.div>
         </motion.div>
