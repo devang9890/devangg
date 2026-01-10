@@ -4,53 +4,55 @@
   left: 0;
   width: 100%;
   height: 100%;
-  z-index: -1;
+  z-index: 0;
   overflow: hidden;
+  background: #020617;
+  pointer-events: none;
 }
 
 .particle {
   position: absolute;
-  background: linear-gradient(45deg, rgba(223, 137, 8, 0.3), rgba(180, 21, 255, 0.3));
+  background: radial-gradient(circle, rgba(0, 234, 255, 0.6), rgba(255, 78, 205, 0.4));
   border-radius: 50%;
-  opacity: 0.05;
+  opacity: 0.4;
+  filter: blur(2px);
 }
 
 /* Enhanced twinkling stars */
 .twinkling-star {
   position: absolute;
-  background: #ffffff;
+  background: #00eaff;
   border-radius: 50%;
   box-shadow:
-    0 0 2px #ffffff,
-    0 0 4px #ffffff,
-    0 0 6px #DF8908,
-    0 0 8px #B415FF;
+    0 0 2px rgba(0, 234, 255, 0.8),
+    0 0 4px rgba(0, 234, 255, 0.6),
+    0 0 6px rgba(255, 78, 205, 0.4);
   animation: twinkle-glow 3s ease-in-out infinite;
 }
 
-/* Different star types for variety */
+/* Different star types for variety - cyan/pink only */
 .twinkling-star:nth-child(3n) {
-  background: linear-gradient(45deg, #ffffff, #DF8908);
+  background: rgba(0, 234, 255, 0.9);
   box-shadow:
-    0 0 3px #ffffff,
-    0 0 6px #DF8908,
-    0 0 9px #B415FF;
+    0 0 3px rgba(0, 234, 255, 0.9),
+    0 0 6px rgba(0, 234, 255, 0.7),
+    0 0 9px rgba(255, 78, 205, 0.5);
 }
 
 .twinkling-star:nth-child(3n+1) {
-  background: linear-gradient(45deg, #ffffff, #B415FF);
+  background: rgba(255, 78, 205, 0.8);
   box-shadow:
-    0 0 2px #ffffff,
-    0 0 4px #B415FF,
-    0 0 6px #DF8908;
+    0 0 2px rgba(255, 78, 205, 0.8),
+    0 0 4px rgba(255, 78, 205, 0.6),
+    0 0 6px rgba(0, 234, 255, 0.4);
 }
 
 .twinkling-star:nth-child(3n+2) {
-  background: linear-gradient(45deg, #DF8908, #B415FF);
+  background: rgba(0, 200, 255, 0.85);
   box-shadow:
-    0 0 4px #DF8908,
-    0 0 8px #B415FF,
-    0 0 12px #ffffff;
+    0 0 4px rgba(0, 200, 255, 0.8),
+    0 0 8px rgba(255, 78, 205, 0.5),
+    0 0 12px rgba(0, 234, 255, 0.3);
 }
 
 @keyframes twinkle-glow {
@@ -68,13 +70,13 @@
   position: absolute;
   border-radius: 50%;
   filter: blur(60px);
-  opacity: 0.05;
+  opacity: 0.08;
 }
 
 .orb-1 {
   width: 400px;
   height: 400px;
-  background: radial-gradient(circle, rgba(223, 137, 8, 0.2) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(0, 234, 255, 0.3) 0%, transparent 70%);
   top: 15%;
   left: 8%;
 }
@@ -82,7 +84,7 @@
 .orb-2 {
   width: 500px;
   height: 500px;
-  background: radial-gradient(circle, rgba(180, 21, 255, 0.2) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(255, 78, 205, 0.3) 0%, transparent 70%);
   top: 55%;
   right: 12%;
 }
@@ -90,7 +92,7 @@
 .orb-3 {
   width: 300px;
   height: 300px;
-  background: radial-gradient(circle, rgba(255, 107, 107, 0.2) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(0, 234, 255, 0.2) 0%, transparent 70%);
   bottom: 15%;
   left: 45%;
 }

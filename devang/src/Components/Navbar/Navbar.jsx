@@ -1,68 +1,59 @@
-import React, { useRef, useState } from 'react';
-import './Navbar.css';
-import logo from '../../assets/logo.svg';
-import underline from '../../assets/nav_underline.svg';
-import AnchorLink from 'react-anchor-link-smooth-scroll'; // ✅ Required 
-import menu_open from '../../assets/menu_open.svg'
-import menu_close from '../../assets/menu_close.svg'
-import { useTheme } from '../../context/ThemeContext';
+import React, { useState } from "react";
+import "./Navbar.css";
 
 const Navbar = () => {
-  const [menu, setMenu] = useState("home");
-  const menuRef = useRef();
-  const { isDark, toggleTheme } = useTheme();
+  const [open, setOpen] = useState(false);
 
-  const openMenu = () =>{
-    menuRef.current.style.right="0";
-  }
-  const closeMenu = () =>{
-    menuRef.current.style.right="-350px";
-  }
+  const links = ["Home", "About", "Services", "Portfolio", "Contact"];
 
   return (
-    <div className='navbar'>
-      <img src={logo} alt="Logo" />
-      <img src={menu_open} onClick={openMenu} alt=""  className='nav-mob-open'/>
-      <ul ref={menuRef} className="nav-menu">
-        <img src={menu_close} onClick={closeMenu} alt="" className="nav-mob-close" />
-        <li>
-          <AnchorLink className='anchor-link' href='#home'>
-            <p onClick={() => setMenu("home")}>Home</p>
-          </AnchorLink>
-          {menu === "home" && <img src={underline} alt="underline" />}
-        </li>
-        <li>
-          <AnchorLink className='anchor-link' offset={50} href='#about'>
-            <p onClick={() => setMenu("about")}>About me</p>
-          </AnchorLink>
-          {menu === "about" && <img src={underline} alt="underline" />}
-        </li>
-        <li>
-          <AnchorLink className='anchor-link' offset={50} href='#services'>
-            <p onClick={() => setMenu("services")}>Services</p>
-          </AnchorLink>
-          {menu === "services" && <img src={underline} alt="underline" />}
-        </li>
-        <li>
-          <AnchorLink className='anchor-link' offset={50} href='#work'>
-            <p onClick={() => setMenu("work")}>Portfolio</p>
-          </AnchorLink>
-          {menu === "work" && <img src={underline} alt="underline" />}
-        </li>
-        <li>
-          <AnchorLink className='anchor-link' offset={50} href='#contact'>
-            <p onClick={() => setMenu("contact")}>Contact</p>
-          </AnchorLink>
-          {menu === "contact" && <img src={underline} alt="underline" />}
-        </li>
-      </ul>
-      <div className="nav-right">
-        <div className="nav-connect"><AnchorLink className='anchor-link' offset={50} href='#contact'>Connect With Me</AnchorLink></div>
-        <button className="theme-toggle" onClick={toggleTheme}>
-          {isDark ? '☀️' : '🌙'}
-        </button>
+    <nav className="navbar">
+      {/* Logo */}
+      <div className="nav-logo">
+        <span className="dot" />
+        <span className="dot" />
+        <span className="dot" />
+        <span className="dot" />
       </div>
-    </div>
+
+      {/* Desktop links */}
+      <div className="nav-links">
+        {links.map((item) => (
+          <a key={item} href={`#${item.toLowerCase()}`} className="nav-link">
+            <span>{item}</span>
+            <span>{item}</span>
+          </a>
+        ))}
+      </div>
+
+      {/* Actions */}
+      <div className="nav-actions">
+        <button className="btn-outline">Contact</button>
+        <button className="btn-glow">Connect</button>
+      </div>
+
+      {/* Mobile toggle */}
+      <button className="menu-toggle" onClick={() => setOpen(!open)}>
+        ☰
+      </button>
+
+      {/* Mobile menu */}
+      {open && (
+        <div className="mobile-menu">
+          {links.map((item) => (
+            <a
+              key={item}
+              href={`#${item.toLowerCase()}`}
+              onClick={() => setOpen(false)}
+            >
+              {item}
+            </a>
+          ))}
+          <button className="btn-outline">Contact</button>
+          <button className="btn-glow">Connect</button>
+        </div>
+      )}
+    </nav>
   );
 };
 

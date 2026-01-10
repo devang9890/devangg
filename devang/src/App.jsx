@@ -13,6 +13,7 @@ import { ThemeProvider } from './context/ThemeContext'
 const App = () => {
   return (
     <ThemeProvider>
+      <AnimatedBackground />
       <div className="app">
         <motion.div
           initial={{ opacity: 0 }}
@@ -20,7 +21,6 @@ const App = () => {
           transition={{ duration: 1 }}
           className="container"
         >
-          <AnimatedBackground />
           <Navbar/>
           <Hero/>
           <About/>

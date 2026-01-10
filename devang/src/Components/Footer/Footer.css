@@ -18,7 +18,7 @@
 .footer-top-left p {
   font-size: 1.3rem;
   font-weight: 400;
-  color: var(--text-primary);
+  color: #cbd5e1;
   line-height: 1.6;
 }
 
@@ -33,9 +33,9 @@
   gap: 30px;
   padding: 25px 35px;
   border-radius: 50px;
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(14px);
+  border: 1px solid rgba(0, 234, 255, 0.15);
   padding-right: 100px;
   transition: all 0.3s ease;
 }
@@ -44,7 +44,7 @@
   outline: none;
   border: none;
   background: transparent;
-  color: var(--text-primary);
+  color: #cbd5e1;
   font-family: inherit;
   font-size: 1.1rem;
   width: 100%;
@@ -59,13 +59,14 @@
   font-weight: 600;
   padding: 25px 50px;
   border-radius: 50px;
-  background: linear-gradient(264deg, #df8909 -5.09%, #b415ff 106.28%);
+  background: linear-gradient(135deg, #00eaff, #ff4ecd);
   cursor: pointer;
   transition: 0.3s;
   border: none;
-  color: var(--text-secondary);
+  color: #020617;
   position: relative;
   overflow: hidden;
+  box-shadow: 0 0 20px rgba(0, 234, 255, 0.3);
 }
 
 .footer-subscribe::before {
@@ -88,9 +89,9 @@
   justify-content: space-between;
   align-items: center;
   font-size: 1.1rem;
-  color: var(--text-primary);
+  color: #cbd5e1;
   padding-top: 30px;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  border-top: 1px solid rgba(0, 234, 255, 0.15);
 }
 
 .footer-bottom-right {
@@ -99,24 +100,24 @@
 }
 
 .footer-bottom-right a {
-  color: var(--text-primary);
+  color: #cbd5e1;
   text-decoration: none;
   transition: color 0.3s ease;
 }
 
 .footer-bottom-right a:hover {
-  color: var(--accent-color);
-}
-
-.footer-email-input:hover {
-  border: 2px solid var(--accent-color);
-  transform: translateY(-2px);
-  box-shadow: 0 10px 30px rgba(223, 137, 8, 0.2);
+  color: #00eaff;
 }
 
 .footer-subscribe:hover {
   transform: translateY(-3px);
-  box-shadow: 0 15px 35px rgba(223, 137, 8, 0.3);
+  box-shadow: 0 15px 35px rgba(0, 234, 255, 0.4);
+}
+
+.footer-email-input:hover {
+  border: 1px solid rgba(0, 234, 255, 0.4);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(0, 234, 255, 0.15);
 }
 
 /* Responsive design */

@@ -177,15 +177,6 @@ const About = () => {
             <h1 className="gradient-text">20+</h1>
             <p>PROJECTS COMPLETED</p>
           </motion.div>
-          <hr />
-          <motion.div 
-            className="about-achievement"
-            whileHover={{ scale: 1.05 }}
-            transition={{ type: "spring", stiffness: 300 }}
-          >
-            <h1 className="gradient-text">10+</h1>
-            <p>HAPPY CLIENTS</p>
-          </motion.div>
         </motion.div>
       </div>
     </section>
