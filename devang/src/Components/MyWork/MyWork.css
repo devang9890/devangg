@@ -1,0 +1,269 @@
+.mywork {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 80px;
+  width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+.mywork-title {
+  position: relative;
+  text-align: center;
+  margin-bottom: 60px;
+}
+
+.mywork-title h1 {
+  font-size: 4rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+  background: linear-gradient(90deg, #00eaff, #ff4ecd);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.mywork-title img {
+  position: absolute;
+  bottom: -20px;
+  right: 10%;
+  z-index: -1;
+  opacity: 0.3;
+}
+
+.mywork-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+  width: 100%;
+  margin-bottom: 60px;
+}
+
+.project-card {
+  position: relative;
+  border-radius: 22px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(0, 234, 255, 0.15);
+  backdrop-filter: blur(14px);
+  height: 100%;
+}
+
+.project-card img {
+  box-sizing: border-box;
+  width: 100%;
+  height: 250px;
+  transition: 0.3s;
+  cursor: pointer;
+  object-fit: cover;
+}
+
+.project-card:hover img {
+  transform: scale(1.05);
+  transition: 0.3s;
+}
+
+.project-info {
+  padding: 25px;
+  background: rgba(0, 20, 24, 0.8);
+}
+
+.project-info h3 {
+  color: #ffffff;
+  font-size: 1.3rem;
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.project-description {
+  color: #cbd5e1;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin-bottom: 20px;
+  opacity: 0.9;
+}
+
+.project-buttons {
+  display: flex;
+  gap: 12px;
+}
+
+.project-btn {
+  padding: 10px 20px;
+  border-radius: 25px;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  border: 1px solid transparent;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.project-btn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: left 0.5s;
+}
+
+.project-btn:hover::before {
+  left: 100%;
+}
+
+.project-btn.live-demo {
+  background: linear-gradient(135deg, #00eaff, #ff4ecd);
+  color: #020617;
+  box-shadow: 0 4px 15px rgba(0, 234, 255, 0.3);
+}
+
+.project-btn.code {
+  background: transparent;
+  color: #ffffff;
+  border-color: rgba(0, 234, 255, 0.3);
+  backdrop-filter: blur(10px);
+}
+
+.project-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.project-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(0, 234, 255, 0.15);
+  border-color: rgba(0, 234, 255, 0.4);
+}
+
+.mywork-showmore {
+  display: flex;
+  gap: 15px;
+  align-items: center;
+  border-radius: 50px;
+  border: 1px solid rgba(0, 234, 255, 0.3);
+  padding: 25px 40px;
+  font-weight: 500;
+  font-size: 1.1rem;
+  margin-bottom: 80px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  background: rgba(0, 234, 255, 0.05);
+  backdrop-filter: blur(10px);
+  color: #ffffff;
+  position: relative;
+  overflow: hidden;
+}
+
+.mywork-showmore:hover {
+  gap: 25px;
+  border-color: rgba(0, 234, 255, 0.6);
+  transform: translateY(-2px);
+  box-shadow: 0 10px 30px rgba(0, 234, 255, 0.15);
+}
+
+.mywork-showmore img {
+  transition: transform 0.3s ease;
+  width: 20px;
+  height: 20px;
+}
+
+.arrow-rotated {
+  transform: rotate(180deg);
+}
+
+/* Responsive design */
+@media (max-width: 1200px) {
+  .mywork {
+    padding: 0 30px;
+  }
+  
+  .mywork-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .mywork {
+    gap: 60px;
+    padding: 0 20px;
+    align-items: start;
+  }
+  
+  .mywork-title h1 {
+    font-size: 3rem;
+  }
+  
+  .mywork-title img {
+    width: 100px;
+    right: 5%;
+  }
+  
+  .mywork-container {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+  
+  .project-card img {
+    height: 200px;
+  }
+  
+  .project-info {
+    padding: 20px;
+  }
+  
+  .project-info h3 {
+    font-size: 1.1rem;
+  }
+  
+  .project-description {
+    font-size: 0.9rem;
+    line-height: 1.4;
+  }
+  
+  .project-buttons {
+    gap: 10px;
+  }
+  
+  .project-btn {
+    padding: 8px 16px;
+    font-size: 0.85rem;
+  }
+  
+  .mywork-showmore {
+    padding: 20px 30px;
+    font-size: 1rem;
+    margin: 40px auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .mywork {
+    padding: 0 15px;
+  }
+  
+  .mywork-title h1 {
+    font-size: 2.5rem;
+  }
+  
+  .project-info {
+    padding: 18px;
+  }
+  
+  .project-btn {
+    padding: 7px 14px;
+    font-size: 0.8rem;
+  }
+  
+  .mywork-showmore {
+    padding: 18px 25px;
+    font-size: 0.95rem;
+  }
+}

@@ -1,0 +1,115 @@
+.animated-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  overflow: hidden;
+  background: #020617;
+  pointer-events: none;
+}
+
+.particle {
+  position: absolute;
+  background: radial-gradient(circle, rgba(0, 234, 255, 0.6), rgba(255, 78, 205, 0.4));
+  border-radius: 50%;
+  opacity: 0.4;
+  filter: blur(2px);
+}
+
+/* Enhanced twinkling stars */
+.twinkling-star {
+  position: absolute;
+  background: #00eaff;
+  border-radius: 50%;
+  box-shadow:
+    0 0 2px rgba(0, 234, 255, 0.8),
+    0 0 4px rgba(0, 234, 255, 0.6),
+    0 0 6px rgba(255, 78, 205, 0.4);
+  animation: twinkle-glow 3s ease-in-out infinite;
+}
+
+/* Different star types for variety - cyan/pink only */
+.twinkling-star:nth-child(3n) {
+  background: rgba(0, 234, 255, 0.9);
+  box-shadow:
+    0 0 3px rgba(0, 234, 255, 0.9),
+    0 0 6px rgba(0, 234, 255, 0.7),
+    0 0 9px rgba(255, 78, 205, 0.5);
+}
+
+.twinkling-star:nth-child(3n+1) {
+  background: rgba(255, 78, 205, 0.8);
+  box-shadow:
+    0 0 2px rgba(255, 78, 205, 0.8),
+    0 0 4px rgba(255, 78, 205, 0.6),
+    0 0 6px rgba(0, 234, 255, 0.4);
+}
+
+.twinkling-star:nth-child(3n+2) {
+  background: rgba(0, 200, 255, 0.85);
+  box-shadow:
+    0 0 4px rgba(0, 200, 255, 0.8),
+    0 0 8px rgba(255, 78, 205, 0.5),
+    0 0 12px rgba(0, 234, 255, 0.3);
+}
+
+@keyframes twinkle-glow {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scale(0.8);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.2);
+  }
+}
+
+.gradient-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(60px);
+  opacity: 0.08;
+}
+
+.orb-1 {
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(0, 234, 255, 0.3) 0%, transparent 70%);
+  top: 15%;
+  left: 8%;
+}
+
+.orb-2 {
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(255, 78, 205, 0.3) 0%, transparent 70%);
+  top: 55%;
+  right: 12%;
+}
+
+.orb-3 {
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(0, 234, 255, 0.2) 0%, transparent 70%);
+  bottom: 15%;
+  left: 45%;
+}
+
+@media (max-width: 768px) {
+  .orb-1 {
+    width: 250px;
+    height: 250px;
+  }
+
+  .orb-2 {
+    width: 300px;
+    height: 300px;
+  }
+
+  .orb-3 {
+    width: 200px;
+    height: 200px;
+  }
+} 

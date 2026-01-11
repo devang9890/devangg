@@ -1,0 +1,11 @@
+<svg width="120" height="40" viewBox="0 0 120 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Simple "Devang" text -->
+  <text x="8" y="28" font-family="Inter, sans-serif" font-size="26" font-weight="600" fill="url(#paint0_linear)">Devang</text>
+  
+  <defs>
+    <linearGradient id="paint0_linear" x1="8" y1="8" x2="112" y2="32" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#DF8908"/>
+      <stop offset="1" stop-color="#B415FF"/>
+    </linearGradient>
+  </defs>
+</svg>
