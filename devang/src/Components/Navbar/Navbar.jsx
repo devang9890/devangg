@@ -28,8 +28,8 @@ const Navbar = () => {
 
       {/* Actions */}
       <div className="nav-actions">
-        <button className="btn-outline">Contact</button>
-        <button className="btn-glow">Connect</button>
+        <button className="btn-glow">Contact</button>
+        {/* <button className="btn-glow">Connect</button> */}
       </div>
 
       {/* Mobile toggle */}
@@ -49,7 +49,7 @@ const Navbar = () => {
               {item}
             </a>
           ))}
-          <button className="btn-outline">Contact</button>
+          <button className="btn-glow">Contact</button>
           <button className="btn-glow">Connect</button>
         </div>
       )}

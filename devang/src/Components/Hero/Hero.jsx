@@ -2,6 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import "./Hero.css";
 import dhruv from "../../assets/dhruv.jpg";
+import resume from "../../assets/resume.pdf";
 import AnchorLink from "react-anchor-link-smooth-scroll";
 
 const Hero = () => {
@@ -26,7 +27,7 @@ const Hero = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2 }}
         >
-          <span className="gradient-name">Devang</span>
+          <span className="gradient-name">Devang Singh</span>
         </motion.h1>
 
         <motion.p
@@ -59,7 +60,7 @@ const Hero = () => {
             Connect With Me
           </AnchorLink>
 
-          <a href="/resume.pdf" target="_blank" className="btn-outline">
+          <a href={resume} target="_blank" rel="noopener noreferrer" className="btn-outline" download>
             Download Resume
           </a>
         </motion.div>
