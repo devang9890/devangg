@@ -26,7 +26,6 @@ const IntroLanding = ({ onEnter }) => {
         currentIndex++;
       } else {
         clearInterval(welcomeInterval);
-        // Hold for 500ms, then fade out and show DEVANG SINGH
         setTimeout(() => {
           setWelcomeComplete(true);
           setTimeout(() => {
@@ -34,12 +33,12 @@ const IntroLanding = ({ onEnter }) => {
           }, 500);
         }, 500);
       }
-    }, 60); // Fast typing
+    }, 70);
 
     return () => clearInterval(welcomeInterval);
   }, []);
 
-  // STEP 2: Type out DEVANG SINGH (after WELCOME fades)
+  // STEP 2: Type out DEVANG SINGH
   useEffect(() => {
     if (!showDevang) return;
 
@@ -51,12 +50,11 @@ const IntroLanding = ({ onEnter }) => {
       } else {
         clearInterval(devangInterval);
         setDevangComplete(true);
-        // After DEVANG SINGH types, fade in subtitle
         setTimeout(() => {
           setShowSubtitle(true);
         }, 400);
       }
-    }, 85); // Slightly slower typing
+    }, 90);
 
     return () => clearInterval(devangInterval);
   }, [showDevang]);
@@ -106,29 +104,34 @@ const IntroLanding = ({ onEnter }) => {
       {/* Animated Blue Background */}
       <div className="intro-bg-animated" />
 
-      {/* Subtle Noise Overlay */}
-      <div className="intro-noise-overlay" />
+      {/* Glow Effects */}
+      <div className="intro-glow intro-glow-1" />
+      <div className="intro-glow intro-glow-2" />
+      <div className="intro-glow intro-glow-3" />
+
+      {/* Animated Grid */}
+      <div className="intro-grid-bg" />
 
       {/* Floating Particles with Blue Tones */}
       <div className="intro-particles-container">
-        {[...Array(20)].map((_, i) => (
+        {[...Array(30)].map((_, i) => (
           <motion.div
             key={i}
             className="intro-particle"
             animate={{
-              y: [0, -150, 0],
-              x: [0, Math.sin(i) * 80, 0],
-              opacity: [0, 0.6, 0],
+              y: [Math.random() * 100, Math.random() * 100 - 200],
+              x: [Math.random() * 50 - 25, Math.random() * 50 - 25],
+              opacity: [0, 0.8, 0],
             }}
             transition={{
-              duration: 8 + Math.random() * 4,
+              duration: 10 + Math.random() * 5,
               repeat: Infinity,
               ease: 'easeInOut',
-              delay: Math.random() * 4,
+              delay: Math.random() * 5,
             }}
             style={{
               left: `${Math.random() * 100}%`,
-              top: `${100 + Math.random() * 20}%`,
+              top: `${Math.random() * 100}%`,
             }}
           />
         ))}
@@ -139,33 +142,37 @@ const IntroLanding = ({ onEnter }) => {
         {/* STEP 1: WELCOME Text (fades out) */}
         <motion.div
           className="intro-step-welcome"
-          initial={{ opacity: 0, y: -20 }}
+          initial={{ opacity: 0, y: -30 }}
           animate={{
             opacity: welcomeComplete ? 0 : 1,
-            y: welcomeComplete ? 20 : 0,
+            y: welcomeComplete ? 30 : 0,
           }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.8, ease: 'easeInOut' }}
         >
-          <h1 className="intro-welcome-text">
+          <h2 className="intro-welcome-text">
             {welcomeTyped}
             {!welcomeComplete && (
               <motion.span
                 className="intro-cursor"
                 animate={{ opacity: [1, 0] }}
-                transition={{ duration: 0.5, repeat: Infinity }}
+                transition={{ duration: 0.6, repeat: Infinity }}
               >
-                |
+                _
               </motion.span>
             )}
-          </h1>
+          </h2>
         </motion.div>
 
         {/* STEP 2: DEVANG SINGH Text (main focus) */}
         <motion.div
           className="intro-step-name"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: showDevang ? 1 : 0, y: showDevang ? 0 : 20 }}
-          transition={{ duration: 0.8 }}
+          initial={{ opacity: 0, y: 30, scale: 0.9 }}
+          animate={{ 
+            opacity: showDevang ? 1 : 0, 
+            y: showDevang ? 0 : 30,
+            scale: showDevang ? 1 : 0.9
+          }}
+          transition={{ duration: 0.8, ease: 'easeOut' }}
         >
           <h1 className="intro-name-text">
             {devangTyped}
@@ -175,7 +182,7 @@ const IntroLanding = ({ onEnter }) => {
                 animate={{ opacity: [1, 0] }}
                 transition={{ duration: 0.5, repeat: Infinity }}
               >
-                |
+                _
               </motion.span>
             )}
           </h1>
@@ -184,9 +191,9 @@ const IntroLanding = ({ onEnter }) => {
         {/* STEP 3: Subtitle (fades in after name) */}
         <motion.div
           className="intro-step-subtitle"
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: showSubtitle ? 1 : 0, y: showSubtitle ? 0 : 10 }}
-          transition={{ duration: 0.8 }}
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: showSubtitle ? 1 : 0, y: showSubtitle ? 0 : 15 }}
+          transition={{ duration: 0.6, ease: 'easeOut' }}
         >
           <p className="intro-subtitle-text">Full Stack Web Developer</p>
         </motion.div>
@@ -194,9 +201,9 @@ const IntroLanding = ({ onEnter }) => {
         {/* STEP 3B: Bio Text (fades in after subtitle) */}
         <motion.div
           className="intro-step-bio"
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: showBio ? 1 : 0, y: showBio ? 0 : 10 }}
-          transition={{ duration: 0.8 }}
+          initial={{ opacity: 0, y: 15 }}
+          animate={{ opacity: showBio ? 1 : 0, y: showBio ? 0 : 15 }}
+          transition={{ duration: 0.6, ease: 'easeOut', delay: 0.1 }}
         >
           <p className="intro-bio-text">
             Building elegant digital experiences with React, JavaScript & modern web technologies
@@ -208,14 +215,24 @@ const IntroLanding = ({ onEnter }) => {
           className="intro-step-cta"
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: showCTA ? 1 : 0, y: showCTA ? 0 : 20 }}
-          transition={{ duration: 0.8 }}
+          transition={{ duration: 0.6, ease: 'easeOut', delay: 0.2 }}
         >
-          <button className="intro-btn intro-btn-enter" onClick={handleEnter}>
+          <motion.button 
+            className="intro-btn intro-btn-enter" 
+            onClick={handleEnter}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.98 }}
+          >
             ENTER //
-          </button>
-          <button className="intro-btn intro-btn-exit" onClick={handleExit}>
+          </motion.button>
+          <motion.button 
+            className="intro-btn intro-btn-exit" 
+            onClick={handleExit}
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.98 }}
+          >
             EXIT //
-          </button>
+          </motion.button>
         </motion.div>
       </div>
 

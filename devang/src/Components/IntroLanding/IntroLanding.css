@@ -66,6 +66,7 @@
   pointer-events: none;
   z-index: 1;
   animation: noise-flicker 0.15s infinite;
+  display: none;
 }
 
 @keyframes noise-flicker {
@@ -75,6 +76,86 @@
   20%, 24%, 55% {
     opacity: 0.08;
   }
+}
+
+/* ─────────────────────────────────────────────────────────────────────────
+   GLOW EFFECTS (ENHANCED)
+   ───────────────────────────────────────────────────────────────────────── */
+
+.intro-glow {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(120px);
+  pointer-events: none;
+  z-index: 1;
+  mix-blend-mode: screen;
+}
+
+.intro-glow-1 {
+  width: 800px;
+  height: 800px;
+  background: radial-gradient(circle, rgba(0, 200, 255, 0.4), transparent);
+  top: -300px;
+  right: -300px;
+  animation: float-glow-1 20s ease-in-out infinite;
+}
+
+.intro-glow-2 {
+  width: 600px;
+  height: 600px;
+  background: radial-gradient(circle, rgba(100, 200, 255, 0.3), transparent);
+  bottom: -200px;
+  left: -200px;
+  animation: float-glow-2 25s ease-in-out infinite;
+}
+
+.intro-glow-3 {
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(0, 150, 255, 0.25), transparent);
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  animation: float-glow-3 30s ease-in-out infinite;
+}
+
+@keyframes float-glow-1 {
+  0% { transform: translate(0, 0); }
+  50% { transform: translate(50px, 50px); }
+  100% { transform: translate(0, 0); }
+}
+
+@keyframes float-glow-2 {
+  0% { transform: translate(0, 0); }
+  50% { transform: translate(-40px, -40px); }
+  100% { transform: translate(0, 0); }
+}
+
+@keyframes float-glow-3 {
+  0% { transform: translate(-50%, -50%) scale(1); }
+  50% { transform: translate(-50%, -50%) scale(1.1); }
+  100% { transform: translate(-50%, -50%) scale(1); }
+}
+
+/* ─────────────────────────────────────────────────────────────────────────
+   GRID BACKGROUND
+   ───────────────────────────────────────────────────────────────────────── */
+
+.intro-grid-bg {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(0deg, rgba(0, 200, 255, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 200, 255, 0.05) 1px, transparent 1px);
+  background-size: 80px 80px;
+  z-index: 1;
+  pointer-events: none;
+  animation: grid-float 20s linear infinite;
+}
+
+@keyframes grid-float {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(80px); }
 }
 
 /* ─────────────────────────────────────────────────────────────────────────
@@ -90,11 +171,11 @@
 
 .intro-particle {
   position: absolute;
-  width: 2px;
-  height: 2px;
-  background: rgba(0, 150, 200, 0.6);
+  width: 3px;
+  height: 3px;
+  background: rgba(0, 200, 255, 0.8);
   border-radius: 50%;
-  box-shadow: 0 0 8px rgba(0, 200, 255, 0.4);
+  box-shadow: 0 0 10px rgba(0, 200, 255, 0.6), 0 0 20px rgba(100, 150, 255, 0.3);
 }
 
 /* ─────────────────────────────────────────────────────────────────────────
@@ -317,6 +398,25 @@
   background: rgba(2, 6, 23, 1);
   z-index: 100;
   pointer-events: none;
+}
+
+/* ─────────────────────────────────────────────────────────────────────────
+   AUDIO UNLOCK LAYER
+   ───────────────────────────────────────────────────────────────────────── */
+
+.intro-audio-unlock-layer {
+  position: fixed;
+  inset: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 99;
+  cursor: pointer;
+  opacity: 0;
+  pointer-events: auto;
+}
+
+.intro-audio-unlock-layer:focus {
+  outline: none;
 }
 
 /* ═════════════════════════════════════════════════════════════════════════
