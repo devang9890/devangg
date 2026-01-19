@@ -1,18 +1,28 @@
-/* IMPORTANT:
-   Hero occupies full viewport with proper z-index layering.
-   Content is centered both vertically and horizontally.
-   Added padding-top to account for fixed navbar.
-*/
+/* HERO FULL SCREEN FIXED (No Overlap with Navbar) */
+
+:root {
+  --navbar-height: 90px; /* ✅ adjust this if your navbar is bigger/smaller */
+}
+
 .hero-section {
   min-height: 100vh;
   background: transparent;
   display: flex;
   align-items: center;
   justify-content: center;
+
   position: relative;
-  z-index: 2;
   overflow: hidden;
-  padding-top: 80px;
+
+  /* ✅ Push hero content below navbar */
+  padding-top: var(--navbar-height);
+  padding-bottom: 40px;
+
+  /* ✅ smooth-scroll anchor fix */
+  scroll-margin-top: var(--navbar-height);
+
+  z-index: 2;
+  isolation: isolate;
 }
 
 .hero-container {
@@ -21,6 +31,7 @@
   text-align: center;
   padding: 0 20px;
   margin: 0 auto;
+
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -32,7 +43,11 @@
   position: relative;
   width: 260px;
   height: 260px;
+
   margin: 0 auto 36px;
+
+  /* ✅ ensures image stays below navbar always */
+  z-index: 2;
 }
 
 .hero-img {
@@ -40,15 +55,16 @@
   height: 100%;
   border-radius: 50%;
   object-fit: cover;
+
   position: relative;
-  z-index: 2;
+  z-index: 3;
 
   box-shadow:
     0 0 35px rgba(0, 234, 255, 0.45),
     0 0 55px rgba(255, 78, 205, 0.25);
 }
 
-/* STATIC NEON RING (NO ROTATION) */
+/* STATIC NEON RING */
 .profile-ring {
   position: absolute;
   inset: -8px;
@@ -56,6 +72,7 @@
   background: linear-gradient(135deg, #00eaff, #ff4ecd);
   filter: blur(6px);
   opacity: 0.6;
+
   z-index: 1;
 }
 
@@ -102,13 +119,16 @@
   font-weight: 600;
   font-size: 1rem;
   text-decoration: none;
-  transition: transform 0.3s, box-shadow 0.3s;
-  cursor: pointer;
   border: none;
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
 
   box-shadow:
     0 0 28px rgba(0, 234, 255, 0.6),
     0 0 40px rgba(255, 78, 205, 0.4);
+}
+
+.btn-glow:hover {
   transform: translateY(-2px);
   box-shadow:
     0 0 45px rgba(0, 234, 255, 0.85),
@@ -124,12 +144,21 @@
   font-weight: 600;
   font-size: 1rem;
   background: transparent;
-  transition: background 0.3s;
   cursor: pointer;
+  transition: background 0.3s, border 0.3s;
+}
+
+.btn-outline:hover {
+  background: rgba(0, 234, 255, 0.08);
+  border: 1px solid rgba(255, 78, 205, 0.4);
 }
 
 /* RESPONSIVE */
 @media (max-width: 1024px) {
+  :root {
+    --navbar-height: 85px;
+  }
+
   .hero-title {
     font-size: 3.5rem;
   }
@@ -152,8 +181,8 @@
 }
 
 @media (max-width: 768px) {
-  .hero-section {
-    padding-top: 70px;
+  :root {
+    --navbar-height: 75px;
   }
 
   .hero-title {
@@ -184,8 +213,8 @@
 }
 
 @media (max-width: 480px) {
-  .hero-section {
-    padding-top: 60px;
+  :root {
+    --navbar-height: 70px;
   }
 
   .hero-title {

@@ -9,6 +9,7 @@ const Hero = () => {
   return (
     <section id="home" className="hero-section">
       <div className="hero-container">
+
         {/* Profile */}
         <motion.div
           className="hero-profile"
@@ -60,10 +61,15 @@ const Hero = () => {
             Connect With Me
           </AnchorLink>
 
-          <a href={resume} target="_blank" rel="noopener noreferrer" className="btn-outline" download>
+          <a
+            href={resume}
+            className="btn-outline"
+            download="Devang_Singh_Resume.pdf"
+          >
             Download Resume
           </a>
         </motion.div>
+
       </div>
     </section>
   );
