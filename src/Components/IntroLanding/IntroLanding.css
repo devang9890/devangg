@@ -1,6 +1,6 @@
 /* ════════════════════════════════════════════════════════════════════════════
-   INTRO LANDING - PREMIUM CINEMATIC SEQUENCE
-   Animated text sequence with controlled user interaction
+   INTRO LANDING - PREMIUM FUTURISTIC LOADING SCREEN
+   Multi-stage cinematic sequence with advanced visual effects
    ════════════════════════════════════════════════════════════════════════════ */
 
 .intro-landing {
@@ -12,175 +12,247 @@
   align-items: center;
   justify-content: center;
   z-index: 9999;
-  background: #020617;
+  background: #000;
   overflow: hidden;
+  font-family: 'Space Grotesk', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
-/* ─────────────────────────────────────────────────────────────────────────
-   ANIMATED BLUE BACKGROUND
-   ───────────────────────────────────────────────────────────────────────── */
+/* ═════════════════════════════════════════════════════════════════════════════
+   BACKGROUND EFFECTS LAYER
+   ═════════════════════════════════════════════════════════════════════════════ */
 
-.intro-bg-animated {
+/* ───────────────────────────────────────────────────────────────────────────
+   1. ANIMATED GRADIENT BACKGROUND
+   ─────────────────────────────────────────────────────────────────────────── */
+
+.intro-bg-gradient {
   position: absolute;
   inset: 0;
   background: linear-gradient(
     135deg,
-    #020617 0%,
-    #0a1b3f 20%,
-    #0d2a52 40%,
-    #051030 60%,
-    #0f1e35 80%,
-    #020617 100%
+    #000000 0%,
+    #0a0e27 15%,
+    #1a1042 30%,
+    #0d0221 50%,
+    #1e0342 70%,
+    #0a0e27 85%,
+    #000000 100%
   );
-  animation: bg-subtle-float 18s ease-in-out infinite;
+  animation: gradientShift 15s ease-in-out infinite;
   z-index: 0;
 }
 
-@keyframes bg-subtle-float {
-  0% {
-    background: linear-gradient(135deg, #020617 0%, #0a1b3f 20%, #0d2a52 40%, #051030 60%, #0f1e35 80%, #020617 100%);
+@keyframes gradientShift {
+  0%, 100% {
+    background-position: 0% 50%;
   }
   50% {
-    background: linear-gradient(225deg, #020617 0%, #0a1b3f 20%, #0d2a52 40%, #051030 60%, #0f1e35 80%, #020617 100%);
-  }
-  100% {
-    background: linear-gradient(135deg, #020617 0%, #0a1b3f 20%, #0d2a52 40%, #051030 60%, #0f1e35 80%, #020617 100%);
+    background-position: 100% 50%;
   }
 }
 
-/* ─────────────────────────────────────────────────────────────────────────
-   NOISE OVERLAY
-   ───────────────────────────────────────────────────────────────────────── */
+/* ───────────────────────────────────────────────────────────────────────────
+   2. NOISE OVERLAY (Film Grain Premium Texture)
+   ─────────────────────────────────────────────────────────────────────────── */
 
 .intro-noise-overlay {
   position: absolute;
   inset: 0;
-  background-image: 
-    repeating-linear-gradient(
-      0deg,
-      rgba(255, 255, 255, 0.02),
-      rgba(255, 255, 255, 0.02) 1px,
-      transparent 1px,
-      transparent 2px
-    );
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='2.5' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  opacity: 0.03;
   pointer-events: none;
   z-index: 1;
-  animation: noise-flicker 0.15s infinite;
-  display: none;
+  animation: grain 8s steps(10) infinite;
 }
 
-@keyframes noise-flicker {
-  0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
-    opacity: 0.05;
-  }
-  20%, 24%, 55% {
-    opacity: 0.08;
-  }
+@keyframes grain {
+  0%, 100% { transform: translate(0, 0); }
+  10% { transform: translate(-5%, -10%); }
+  20% { transform: translate(-15%, 5%); }
+  30% { transform: translate(7%, -25%); }
+  40% { transform: translate(-5%, 25%); }
+  50% { transform: translate(-15%, 10%); }
+  60% { transform: translate(15%, 0%); }
+  70% { transform: translate(0%, 15%); }
+  80% { transform: translate(3%, 35%); }
+  90% { transform: translate(-10%, 10%); }
 }
 
-/* ─────────────────────────────────────────────────────────────────────────
-   GLOW EFFECTS (ENHANCED)
-   ───────────────────────────────────────────────────────────────────────── */
+/* ───────────────────────────────────────────────────────────────────────────
+   3. GRID WITH PERSPECTIVE (Moving Mesh)
+   ─────────────────────────────────────────────────────────────────────────── */
 
-.intro-glow {
+.intro-grid-container {
   position: absolute;
-  border-radius: 50%;
-  filter: blur(120px);
+  inset: 0;
+  overflow: hidden;
+  z-index: 2;
   pointer-events: none;
-  z-index: 1;
-  mix-blend-mode: screen;
 }
 
-.intro-glow-1 {
-  width: 800px;
-  height: 800px;
-  background: radial-gradient(circle, rgba(0, 200, 255, 0.4), transparent);
-  top: -300px;
-  right: -300px;
-  animation: float-glow-1 20s ease-in-out infinite;
-}
-
-.intro-glow-2 {
-  width: 600px;
-  height: 600px;
-  background: radial-gradient(circle, rgba(100, 200, 255, 0.3), transparent);
-  bottom: -200px;
-  left: -200px;
-  animation: float-glow-2 25s ease-in-out infinite;
-}
-
-.intro-glow-3 {
-  width: 500px;
-  height: 500px;
-  background: radial-gradient(circle, rgba(0, 150, 255, 0.25), transparent);
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  animation: float-glow-3 30s ease-in-out infinite;
-}
-
-@keyframes float-glow-1 {
-  0% { transform: translate(0, 0); }
-  50% { transform: translate(50px, 50px); }
-  100% { transform: translate(0, 0); }
-}
-
-@keyframes float-glow-2 {
-  0% { transform: translate(0, 0); }
-  50% { transform: translate(-40px, -40px); }
-  100% { transform: translate(0, 0); }
-}
-
-@keyframes float-glow-3 {
-  0% { transform: translate(-50%, -50%) scale(1); }
-  50% { transform: translate(-50%, -50%) scale(1.1); }
-  100% { transform: translate(-50%, -50%) scale(1); }
-}
-
-/* ─────────────────────────────────────────────────────────────────────────
-   GRID BACKGROUND
-   ───────────────────────────────────────────────────────────────────────── */
-
-.intro-grid-bg {
+.intro-grid-perspective {
   position: absolute;
   inset: 0;
   background-image: 
-    linear-gradient(0deg, rgba(0, 200, 255, 0.05) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 200, 255, 0.05) 1px, transparent 1px);
-  background-size: 80px 80px;
-  z-index: 1;
+    linear-gradient(to right, rgba(0, 212, 255, 0.08) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(0, 212, 255, 0.08) 1px, transparent 1px);
+  background-size: 60px 60px;
+  transform: perspective(500px) rotateX(60deg) translateZ(-150px);
+  transform-origin: center bottom;
+  animation: gridMove 20s linear infinite;
+}
+
+@keyframes gridMove {
+  0% {
+    transform: perspective(500px) rotateX(60deg) translateZ(-150px) translateY(0);
+  }
+  100% {
+    transform: perspective(500px) rotateX(60deg) translateZ(-150px) translateY(60px);
+  }
+}
+
+/* ───────────────────────────────────────────────────────────────────────────
+   4. SCANNER BEAM (Horizontal Scanning Light)
+   ─────────────────────────────────────────────────────────────────────────── */
+
+.intro-scanner-beam {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 150px;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(0, 212, 255, 0.15) 40%,
+    rgba(0, 212, 255, 0.3) 50%,
+    rgba(0, 212, 255, 0.15) 60%,
+    transparent 100%
+  );
+  filter: blur(20px);
   pointer-events: none;
-  animation: grid-float 20s linear infinite;
+  z-index: 3;
 }
 
-@keyframes grid-float {
-  0% { transform: translateY(0); }
-  100% { transform: translateY(80px); }
-}
-
-/* ─────────────────────────────────────────────────────────────────────────
-   FLOATING PARTICLES (BLUE TONES)
-   ───────────────────────────────────────────────────────────────────────── */
+/* ───────────────────────────────────────────────────────────────────────────
+   5. FLOATING PARTICLES (Enhanced)
+   ─────────────────────────────────────────────────────────────────────────── */
 
 .intro-particles-container {
   position: absolute;
   inset: 0;
   z-index: 2;
   pointer-events: none;
+  overflow: hidden;
 }
 
 .intro-particle {
   position: absolute;
   width: 3px;
   height: 3px;
-  background: rgba(0, 200, 255, 0.8);
+  background: rgba(0, 212, 255, 0.7);
   border-radius: 50%;
-  box-shadow: 0 0 10px rgba(0, 200, 255, 0.6), 0 0 20px rgba(100, 150, 255, 0.3);
+  box-shadow: 
+    0 0 8px rgba(0, 212, 255, 0.5),
+    0 0 15px rgba(157, 78, 221, 0.3);
 }
 
-/* ─────────────────────────────────────────────────────────────────────────
-   CONTENT WRAPPER
-   ───────────────────────────────────────────────────────────────────────── */
+/* ───────────────────────────────────────────────────────────────────────────
+   6. GLITCH LINES (Digital Distortion)
+   ─────────────────────────────────────────────────────────────────────────── */
+
+.intro-glitch-line {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    rgba(0, 212, 255, 0.5) 50%,
+    transparent 100%
+  );
+  pointer-events: none;
+  z-index: 4;
+}
+
+/* ═════════════════════════════════════════════════════════════════════════════
+   STAGE 0: BOOT SEQUENCE
+   ═════════════════════════════════════════════════════════════════════════════ */
+
+.intro-boot-container {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: 10;
+  padding: 40px;
+}
+
+.intro-boot-terminal {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 40px;
+}
+
+.intro-boot-line {
+  font-family: 'Monaco', 'Courier New', monospace;
+  font-size: clamp(0.85rem, 1.5vw, 1rem);
+  color: #00d4ff;
+  text-shadow: 0 0 10px rgba(0, 212, 255, 0.5);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.intro-boot-prompt {
+  color: #9d4edd;
+  font-weight: bold;
+}
+
+/* Loading Bar */
+.intro-loading-bar-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  max-width: 400px;
+}
+
+.intro-loading-bar-bg {
+  width: 100%;
+  height: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.intro-loading-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, #00d4ff, #9d4edd);
+  border-radius: 10px;
+  transition: width 0.1s ease-out;
+  box-shadow: 
+    0 0 10px rgba(0, 212, 255, 0.5),
+    0 0 20px rgba(157, 78, 221, 0.3);
+}
+
+.intro-loading-percentage {
+  font-family: 'Monaco', 'Courier New', monospace;
+  font-size: clamp(0.9rem, 1.6vw, 1.1rem);
+  color: #00d4ff;
+  font-weight: bold;
+  text-shadow: 0 0 10px rgba(0, 212, 255, 0.6);
+}
+
+/* ═════════════════════════════════════════════════════════════════════════════
+   MAIN CONTENT WRAPPER
+   ═════════════════════════════════════════════════════════════════════════════ */
 
 .intro-content-wrapper {
   position: relative;
@@ -189,259 +261,429 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 0;
   text-align: center;
   padding: 60px 40px;
   width: 100%;
-  max-width: 900px;
+  max-width: 1000px;
   margin: 0 auto;
 }
 
-/* ─────────────────────────────────────────────────────────────────────────
-   STEP 1: WELCOME TEXT (TYPING & FADE OUT)
-   ───────────────────────────────────────────────────────────────────────── */
+/* ═════════════════════════════════════════════════════════════════════════════
+   STAGE 1: WELCOME TEXT (With Glow Burst Effects)
+   ═════════════════════════════════════════════════════════════════════════════ */
 
-.intro-step-welcome {
-  height: 120px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  min-height: 100px;
+.intro-welcome-container {
+  margin-bottom: 20px;
+  display: block;
+  text-align: center;
 }
 
 .intro-welcome-text {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  font-size: clamp(2rem, 5vw, 4rem);
-  font-weight: 600;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 700;
   letter-spacing: 0.15em;
-  color: rgba(255, 255, 255, 0.9);
+  color: #fff;
   margin: 0;
-  line-height: 1.2;
+  padding: 0;
   text-transform: uppercase;
-  text-shadow: 0 0 20px rgba(0, 234, 255, 0.3);
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  /* Prevent text from breaking */
+  white-space: nowrap;
+  display: inline-block;
 }
 
-/* ─────────────────────────────────────────────────────────────────────────
-   STEP 2: DEVANG SINGH NAME (MAIN FOCUS)
-   ───────────────────────────────────────────────────────────────────────── */
+.intro-letter {
+  display: inline;
+  /* Remove any spacing between letter spans */
+  margin: 0 !important;
+  padding: 0 !important;
+  text-shadow: 
+    0 0 20px rgba(0, 212, 255, 0.8),
+    0 0 40px rgba(0, 212, 255, 0.4);
+  animation: letterGlow 1.5s ease-in-out infinite;
+}
 
-.intro-step-name {
-  margin: 20px 0 40px 0;
+.intro-letter:nth-child(even) {
+  animation-delay: 0.1s;
+}
+
+@keyframes letterGlow {
+  0%, 100% {
+    text-shadow: 
+      0 0 20px rgba(0, 212, 255, 0.8),
+      0 0 40px rgba(0, 212, 255, 0.4);
+  }
+  50% {
+    text-shadow: 
+      0 0 30px rgba(0, 212, 255, 1),
+      0 0 60px rgba(0, 212, 255, 0.6),
+      0 0 90px rgba(157, 78, 221, 0.3);
+  }
+}
+
+.intro-cursor {
+  display: inline-block;
+  margin-left: 8px;
+  color: #00d4ff;
+  font-weight: 100;
+}
+
+/* ═════════════════════════════════════════════════════════════════════════════
+   STAGE 2: NAME TEXT (With RGB Glitch & Neon Underline)
+   ═════════════════════════════════════════════════════════════════════════════ */
+
+.intro-name-container {
+  position: relative;
+  margin: 30px 0;
+  padding: 20px;
+  /* Use block display to prevent flex spacing issues */
+  display: block;
+  text-align: center;
+  /* Ensure container doesn't force text wrapping */
+  overflow-x: visible;
+}
+
+/* Neon Pulse Background */
+.intro-neon-pulse {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 120%;
+  height: 120%;
+  background: radial-gradient(
+    circle,
+    rgba(0, 212, 255, 0.15) 0%,
+    rgba(157, 78, 221, 0.1) 50%,
+    transparent 70%
+  );
+  border-radius: 50%;
+  filter: blur(40px);
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Circular Loader Ring */
+.intro-circular-loader {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 140%;
+  height: 140%;
+  z-index: -1;
+  pointer-events: none;
 }
 
 .intro-name-text {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  font-size: clamp(3rem, 10vw, 7rem);
-  font-weight: 800;
-  letter-spacing: -0.02em;
+  font-size: clamp(3rem, 8vw, 6rem);
+  font-weight: 900;
+  /* CRITICAL: Keep minimal letter spacing to prevent gaps */
+  letter-spacing: 0;
+  /* Prevent text from wrapping to multiple lines */
+  white-space: nowrap;
+  /* Remove any word spacing that could cause gaps */
+  word-spacing: 0;
+  /* Prevent flex/grid from affecting text */
+  display: inline-block;
+  text-align: left;
   margin: 0;
-  line-height: 1;
-  
-  /* Cyan to Pink gradient - matches portfolio exactly */
-  background: linear-gradient(135deg, #00eaff 0%, #ff4ecd 100%);
+  padding: 0;
+  line-height: 1.1;
+  background: none;
+  filter: drop-shadow(0 0 20px rgba(0, 212, 255, 0.4));
+}
+
+.intro-letter-name {
+  /* Render letters inline to avoid inline-block whitespace issues */
+  display: inline;
+  margin: 0 !important;
+  padding: 0 !important;
+  flex: none;
+  /* Preserve NBSP between words */
+  white-space: pre;
+  /* Apply gradient per-letter so transforms don't break visibility */
+  background: linear-gradient(135deg, #00d4ff 0%, #9d4edd 50%, #ff4ecd 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  
-  /* Soft glow around text */
-  filter: drop-shadow(0 0 15px rgba(0, 234, 255, 0.4)) 
-          drop-shadow(0 0 30px rgba(255, 78, 205, 0.25));
-  
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+}
+
+/* RGB Glitch Effect on Every 3rd Letter */
+.intro-glitch-letter {
+  position: relative;
+  animation: glitchAnim 3s infinite;
+}
+
+@keyframes glitchAnim {
+  0%, 90%, 100% {
+    transform: translate(0);
+    filter: none;
+    text-shadow: none;
+  }
+  91% {
+    transform: translate(-1px, 0.5px);
+    filter: hue-rotate(30deg);
+    text-shadow: 0 0 6px rgba(0, 212, 255, 0.6);
+  }
+  92% {
+    transform: translate(1px, -0.5px);
+    filter: hue-rotate(-30deg);
+    text-shadow: 0 0 6px rgba(157, 78, 221, 0.6);
+  }
+  93% {
+    transform: translate(0);
+    filter: none;
+    text-shadow: none;
+  }
 }
 
 .intro-cursor-name {
-  animation: blink-cursor 0.5s infinite;
+  display: inline-block;
   margin-left: 6px;
+  color: #00d4ff;
+  animation: cursorBlink 0.5s infinite;
 }
 
-@keyframes blink-cursor {
+@keyframes cursorBlink {
   0%, 49% { opacity: 1; }
   50%, 100% { opacity: 0; }
 }
 
-/* ─────────────────────────────────────────────────────────────────────────
-   STEP 3: SUBTITLE
-   ───────────────────────────────────────────────────────────────────────── */
+/* Neon Underline */
+.intro-neon-underline {
+  height: 4px;
+  background: linear-gradient(90deg, #00d4ff, #9d4edd, #ff4ecd);
+  margin-top: 15px;
+  border-radius: 2px;
+  box-shadow: 
+    0 0 10px rgba(0, 212, 255, 0.6),
+    0 0 20px rgba(157, 78, 221, 0.4),
+    0 0 30px rgba(255, 78, 205, 0.3);
+}
 
-.intro-step-subtitle {
-  margin-top: 30px;
+/* ═════════════════════════════════════════════════════════════════════════════
+   STAGE 3: SUBTITLE + BIO + STATUS BADGE
+   ═════════════════════════════════════════════════════════════════════════════ */
+
+.intro-subtitle-container {
+  margin-top: 25px;
   margin-bottom: 15px;
 }
 
 .intro-subtitle-text {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  font-size: clamp(1rem, 2.5vw, 1.4rem);
-  font-weight: 500;
-  letter-spacing: 0.08em;
+  font-size: clamp(1rem, 2.2vw, 1.3rem);
+  font-weight: 600;
+  letter-spacing: 0.1em;
   color: #cbd5e1;
   margin: 0;
   text-transform: uppercase;
   opacity: 0.9;
 }
 
-/* ─────────────────────────────────────────────────────────────────────────
-   STEP 3B: BIO TEXT
-   ───────────────────────────────────────────────────────────────────────── */
-
-.intro-step-bio {
-  margin-bottom: 50px;
-  max-width: 600px;
+.intro-bio-container {
+  margin-bottom: 30px;
+  max-width: 650px;
 }
 
 .intro-bio-text {
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  font-size: clamp(0.9rem, 2vw, 1.1rem);
+  font-size: clamp(0.95rem, 1.8vw, 1.1rem);
   font-weight: 400;
-  line-height: 1.6;
-  letter-spacing: 0.01em;
+  line-height: 1.7;
   color: #94a3b8;
   margin: 0;
 }
 
-/* ─────────────────────────────────────────────────────────────────────────
-   STEP 4: CTA BUTTONS (GLASSMORPHISM)
-   ───────────────────────────────────────────────────────────────────────── */
+/* Status Badge */
+.intro-badge-container {
+  margin: 25px 0;
+}
 
-.intro-step-cta {
+.intro-status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px 24px;
+  background: rgba(0, 212, 255, 0.1);
+  border: 1px solid rgba(0, 212, 255, 0.3);
+  border-radius: 50px;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.intro-badge-icon {
+  font-size: 1.2rem;
+  animation: iconPulse 2s ease-in-out infinite;
+}
+
+@keyframes iconPulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+}
+
+.intro-badge-text {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  font-size: clamp(0.75rem, 1.5vw, 0.9rem);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: #00d4ff;
+  text-transform: uppercase;
+}
+
+/* ═════════════════════════════════════════════════════════════════════════════
+   STAGE 4: CTA BUTTONS (Glassmorphism with Shine Sweep)
+   ═════════════════════════════════════════════════════════════════════════════ */
+
+.intro-cta-container {
   display: flex;
-  gap: 30px;
+  gap: 25px;
   align-items: center;
   justify-content: center;
-  margin-top: 20px;
+  margin-top: 30px;
   flex-wrap: wrap;
 }
 
 .intro-btn {
+  position: relative;
   font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-  font-size: clamp(0.9rem, 2vw, 1rem);
+  font-size: clamp(0.9rem, 1.8vw, 1rem);
   font-weight: 700;
   letter-spacing: 0.12em;
   text-transform: uppercase;
-  padding: 16px 42px;
-  border: 2px solid rgba(0, 234, 255, 0.4);
+  padding: 16px 40px;
+  border: 2px solid rgba(255, 255, 255, 0.1);
   border-radius: 50px;
-  background: rgba(255, 255, 255, 0.06);
-  color: #cbd5e1;
+  background: rgba(255, 255, 255, 0.05);
+  color: #fff;
   cursor: pointer;
-  backdrop-filter: blur(15px);
-  -webkit-backdrop-filter: blur(15px);
-  transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
   box-shadow: 
-    0 8px 32px 0 rgba(31, 38, 135, 0.15),
+    0 8px 32px 0 rgba(0, 0, 0, 0.2),
     inset 0 1px 1px rgba(255, 255, 255, 0.1);
-  text-decoration: none;
-  display: inline-block;
-  position: relative;
   overflow: hidden;
   z-index: 1;
 }
 
-.intro-btn::before {
-  content: '';
+/* Animated Shine Sweep */
+.intro-btn-shine {
   position: absolute;
   top: 0;
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(0, 234, 255, 0.25), transparent);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
   transition: left 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
   z-index: -1;
 }
 
-.intro-btn:hover::before {
+.intro-btn:hover .intro-btn-shine {
   left: 100%;
 }
 
-.intro-btn:hover {
-  border-color: rgba(0, 234, 255, 0.8);
-  background: rgba(0, 234, 255, 0.08);
-  box-shadow: 
-    0 12px 40px 0 rgba(0, 234, 255, 0.25),
-    inset 0 1px 1px rgba(255, 255, 255, 0.15),
-    0 0 20px rgba(0, 234, 255, 0.15);
+.intro-btn-text {
+  position: relative;
+  z-index: 1;
 }
 
 .intro-btn-enter {
-  color: #00eaff;
-  border-color: rgba(0, 234, 255, 0.5);
+  border-color: rgba(0, 212, 255, 0.4);
+  background: rgba(0, 212, 255, 0.08);
+  color: #00d4ff;
 }
 
 .intro-btn-enter:hover {
-  color: #00eaff;
-  text-shadow: 0 0 10px rgba(0, 234, 255, 0.5);
+  border-color: rgba(0, 212, 255, 0.8);
+  background: rgba(0, 212, 255, 0.15);
+  box-shadow: 
+    0 12px 40px rgba(0, 212, 255, 0.3),
+    inset 0 1px 1px rgba(255, 255, 255, 0.15);
 }
 
 .intro-btn-exit {
-  color: #ff4ecd;
-  border-color: rgba(255, 78, 205, 0.4);
+  border-color: rgba(157, 78, 221, 0.4);
+  background: rgba(157, 78, 221, 0.08);
+  color: #9d4edd;
 }
 
 .intro-btn-exit:hover {
-  border-color: rgba(255, 78, 205, 0.8);
-  background: rgba(255, 78, 205, 0.08);
-  color: #ff4ecd;
+  border-color: rgba(157, 78, 221, 0.8);
+  background: rgba(157, 78, 221, 0.15);
   box-shadow: 
-    0 12px 40px 0 rgba(255, 78, 205, 0.25),
-    inset 0 1px 1px rgba(255, 255, 255, 0.15),
-    0 0 20px rgba(255, 78, 205, 0.15);
-  text-shadow: 0 0 10px rgba(255, 78, 205, 0.4);
+    0 12px 40px rgba(157, 78, 221, 0.3),
+    inset 0 1px 1px rgba(255, 255, 255, 0.15);
 }
 
-.intro-btn:active {
-  transform: scale(0.95);
-}
-
-/* ─────────────────────────────────────────────────────────────────────────
-   EXIT OVERLAY
-   ───────────────────────────────────────────────────────────────────────── */
+/* ═════════════════════════════════════════════════════════════════════════════
+   EXIT OVERLAY (Fade Out Effect)
+   ═════════════════════════════════════════════════════════════════════════════ */
 
 .intro-exit-overlay {
   position: fixed;
   inset: 0;
-  background: rgba(2, 6, 23, 1);
+  background: #000;
   z-index: 100;
   pointer-events: none;
 }
 
-
-
-/* ═════════════════════════════════════════════════════════════════════════
+/* ═════════════════════════════════════════════════════════════════════════════
    RESPONSIVE DESIGN
-   ════════════════════════════════════════════════════════════════════════ */
+   ═════════════════════════════════════════════════════════════════════════════ */
 
 @media (max-width: 768px) {
   .intro-content-wrapper {
     padding: 40px 25px;
-    gap: 0;
   }
 
   .intro-welcome-text {
-    font-size: clamp(1.5rem, 4vw, 3rem);
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+    letter-spacing: 0.15em;
   }
 
   .intro-name-text {
-    font-size: clamp(2.2rem, 7vw, 5rem);
+    font-size: clamp(2rem, 6vw, 4.5rem);
+    /* Maintain single line on tablets */
+    white-space: nowrap;
+    letter-spacing: 0;
+    display: inline-block;
   }
 
   .intro-subtitle-text {
-    font-size: clamp(0.9rem, 2vw, 1.2rem);
+    font-size: clamp(0.9rem, 2vw, 1.1rem);
   }
 
   .intro-bio-text {
-    font-size: clamp(0.85rem, 1.8vw, 1rem);
+    font-size: clamp(0.85rem, 1.7vw, 1rem);
   }
 
-  .intro-step-cta {
-    gap: 20px;
+  .intro-cta-container {
+    gap: 18px;
   }
 
   .intro-btn {
-    font-size: clamp(0.8rem, 1.8vw, 0.95rem);
-    padding: 12px 30px;
+    font-size: clamp(0.85rem, 1.6vw, 0.95rem);
+    padding: 14px 32px;
+  }
+
+  .intro-boot-line {
+    font-size: clamp(0.75rem, 1.3vw, 0.9rem);
+  }
+
+  .intro-loading-bar-container {
+    max-width: 300px;
   }
 }
 
@@ -450,63 +692,78 @@
     padding: 30px 20px;
   }
 
-  .intro-step-welcome {
-    height: 80px;
-    min-height: 70px;
-  }
-
   .intro-welcome-text {
-    font-size: clamp(1.2rem, 3.5vw, 2.5rem);
+    font-size: clamp(1.2rem, 3.5vw, 2rem);
   }
 
-  .intro-step-name {
-    margin: 15px 0 30px 0;
+  .intro-name-container {
+    margin: 20px 0;
+    padding: 15px 10px;
   }
 
   .intro-name-text {
-    font-size: clamp(1.8rem, 5.5vw, 3.5rem);
-    filter: drop-shadow(0 0 10px rgba(0, 234, 255, 0.3)) 
-            drop-shadow(0 0 20px rgba(255, 78, 205, 0.15));
-  }
-
-  .intro-step-subtitle {
-    margin-top: 20px;
-    margin-bottom: 10px;
+    font-size: clamp(1.8rem, 5vw, 3.5rem);
+    /* Keep name on single line even on small screens */
+    white-space: nowrap;
+    letter-spacing: 0;
+    display: inline-block;
+    /* Allow slight horizontal scroll if needed on very small screens */
+    max-width: 100vw;
   }
 
   .intro-subtitle-text {
     font-size: clamp(0.8rem, 1.8vw, 1rem);
   }
 
-  .intro-step-bio {
-    margin-bottom: 35px;
-  }
-
   .intro-bio-text {
     font-size: clamp(0.75rem, 1.5vw, 0.9rem);
   }
 
-  .intro-step-cta {
+  .intro-cta-container {
     gap: 15px;
     flex-direction: column;
     width: 100%;
   }
 
   .intro-btn {
-    font-size: clamp(0.75rem, 1.6vw, 0.9rem);
-    padding: 11px 28px;
+    font-size: clamp(0.8rem, 1.5vw, 0.9rem);
+    padding: 12px 28px;
     width: 100%;
+    max-width: 280px;
+  }
+
+  .intro-badge-text {
+    font-size: clamp(0.65rem, 1.3vw, 0.8rem);
+  }
+
+  .intro-boot-line {
+    font-size: clamp(0.7rem, 1.2vw, 0.85rem);
+  }
+
+  .intro-loading-bar-container {
+    max-width: 250px;
+  }
+
+  .intro-loading-bar-bg {
+    height: 6px;
   }
 }
 
-/* ═════════════════════════════════════════════════════════════════════════
-   ACCESSIBILITY
-   ════════════════════════════════════════════════════════════════════════ */
+/* ═════════════════════════════════════════════════════════════════════════════
+   ACCESSIBILITY & PERFORMANCE
+   ═════════════════════════════════════════════════════════════════════════════ */
 
 @media (prefers-reduced-motion: reduce) {
-  .intro-bg-animated,
+  .intro-bg-gradient,
+  .intro-noise-overlay,
+  .intro-grid-perspective,
+  .intro-scanner-beam,
   .intro-particle,
-  .intro-btn::before {
+  .intro-glitch-line,
+  .intro-letter,
+  .intro-glitch-letter,
+  .intro-badge-icon,
+  .intro-btn-shine {
     animation: none !important;
   }
 
@@ -515,15 +772,19 @@
   }
 }
 
-/* High contrast mode support */
+/* High contrast mode */
 @media (prefers-contrast: more) {
   .intro-name-text {
-    filter: drop-shadow(0 0 25px rgba(0, 234, 255, 0.6)) 
-            drop-shadow(0 0 40px rgba(255, 78, 205, 0.4));
+    filter: drop-shadow(0 0 30px rgba(0, 212, 255, 0.7));
   }
 
   .intro-btn {
-    border-width: 2px;
+    border-width: 3px;
+  }
+
+  .intro-letter {
+    text-shadow: 
+      0 0 25px rgba(0, 212, 255, 1),
+      0 0 50px rgba(0, 212, 255, 0.6);
   }
 }
-
