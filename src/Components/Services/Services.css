@@ -226,18 +226,6 @@
 
   .service-inner {
     padding: 35px;
-  }@media (max-width: 1024px) {
-  .services-container {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 25px;
-  }
-
-  .services-title h1 {
-    font-size: 3.5rem;
-  }
-
-  .service-inner {
-    padding: 35px;
   }
 
   .service-number {
