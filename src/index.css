@@ -86,6 +86,8 @@ body {
   backface-visibility: hidden;
   perspective: 1000px;
   transition: background 0.3s ease, color 0.3s ease;
+  margin: 0;
+  padding: 0;
 }
 
 /* ===== GLASS CARD UTILITY ===== */
@@ -149,6 +151,13 @@ section {
   z-index: 1;
   width: 100%;
   min-height: 100vh;
+}
+
+.portfolio-wrapper {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  background: var(--bg-main);
 }
 
 .container {

@@ -1,9 +1,15 @@
 .mywork {
   position: relative;
-  padding: 120px 0;
+  padding: 100px 40px;
   width: 100%;
+  max-width: 1400px;
+  margin: 0 auto;
   overflow: hidden;
   background: transparent;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 1;
 }
 
 /* Animated Background Blobs */
@@ -16,6 +22,7 @@
   z-index: 0;
   pointer-events: none;
   overflow: hidden;
+  display: none;
 }
 
 .bg-blob {
@@ -70,9 +77,10 @@
 .mywork-content {
   position: relative;
   z-index: 1;
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 0 40px;
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
 }
 
 .mywork-title {

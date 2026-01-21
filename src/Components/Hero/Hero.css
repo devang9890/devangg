@@ -11,8 +11,7 @@
   justify-content: center;
   position: relative;
   overflow: hidden;
-  padding-top: var(--navbar-height);
-  padding-bottom: 40px;
+  padding: 100px 40px;
   scroll-margin-top: var(--navbar-height);
   z-index: 2;
   isolation: isolate;
@@ -223,7 +222,8 @@
 @media (max-width: 1200px) {
   .hero-title {
     font-size: 4rem;
-  }
+    
+  } 
 
   .hero-subtitle {
     font-size: 1.3rem;
