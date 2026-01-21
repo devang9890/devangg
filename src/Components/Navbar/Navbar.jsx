@@ -1,59 +1,80 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./Navbar.css";
 
 const Navbar = () => {
-  const [open, setOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const links = ["Home", "About", "Services", "Portfolio", "Contact"];
 
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 100);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const handleLinkClick = () => {
+    setIsMenuOpen(false);
+  };
+
   return (
-    <nav className="navbar">
-      {/* Logo */}
-      <div className="nav-logo">
-        <span className="dot" />
-        <span className="dot" />
-        <span className="dot" />
-        <span className="dot" />
-      </div>
+    <>
+      {/* Top Navbar - Default State */}
+      <nav className={`navbar navbar-top ${isScrolled ? "navbar-hidden" : "navbar-visible"}`}>
+        <div className="nav-logo">
+          <span className="dot" />
+          <span className="dot" />
+          <span className="dot" />
+          <span className="dot" />
+        </div>
 
-      {/* Desktop links */}
-      <div className="nav-links">
-        {links.map((item) => (
-          <a key={item} href={`#${item.toLowerCase()}`} className="nav-link">
-            <span>{item}</span>
-            <span>{item}</span>
-          </a>
-        ))}
-      </div>
+        <div className="nav-links">
+          {links.map((item) => (
+            <a key={item} href={`#${item.toLowerCase()}`} className="nav-link">
+              <span>{item}</span>
+              <span>{item}</span>
+            </a>
+          ))}
+        </div>
 
-      {/* Actions */}
-      <div className="nav-actions">
-        <button className="btn-glow">Contact</button>
-        {/* <button className="btn-glow">Connect</button> */}
-      </div>
+        <div className="nav-actions">
+          <button className="btn-glow">Contact</button>
+        </div>
+      </nav>
 
-      {/* Mobile toggle */}
-      <button className="menu-toggle" onClick={() => setOpen(!open)}>
-        ☰
+      {/* Dots Toggle - Top Right (visible when scrolled or menu open; always on mobile) */}
+      <button
+        className={`dots-toggle ${isScrolled || isMenuOpen ? "show" : ""} ${isMenuOpen ? "dots-open" : ""}`}
+        onClick={() => setIsMenuOpen((v) => !v)}
+        aria-label="Toggle menu"
+      >
+        <span></span>
+        <span></span>
+        <span></span>
       </button>
 
-      {/* Mobile menu */}
-      {open && (
-        <div className="mobile-menu">
+      {/* Slide-in Sidebar Menu */}
+      <div className={`side-menu ${isMenuOpen ? "open" : ""}`}>
+        <div className="menu-links">
           {links.map((item) => (
             <a
               key={item}
               href={`#${item.toLowerCase()}`}
-              onClick={() => setOpen(false)}
+              className="menu-link"
+              onClick={handleLinkClick}
             >
               {item}
             </a>
           ))}
-          <button className="btn-glow">Contact</button>
-          <button className="btn-glow">Connect</button>
         </div>
-      )}
-    </nav>
+        <button className="btn-glow menu-cta" onClick={() => setIsMenuOpen(false)}>Contact</button>
+      </div>
+
+      {/* Dark overlay behind menu */}
+      {isMenuOpen && <div className="menu-overlay" onClick={() => setIsMenuOpen(false)} />}
+    </>
   );
 };
 

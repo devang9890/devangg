@@ -7,7 +7,7 @@ import Services from './Components/Services/Services'
 import MyWork from './Components/MyWork/MyWork'
 import Contact from './Components/Contact/Contact'
 import Footer from './Components/Footer/Footer'
-import GlobalBackground from './Components/GlobalBackground/GlobalBackground'
+import AnimatedBackground from './Components/AnimatedBackground/AnimatedBackground'
 import IntroLanding from './Components/IntroLanding/IntroLanding'
 import { ThemeProvider } from './context/ThemeContext'
 
@@ -29,6 +29,8 @@ const App = () => {
 
   return (
     <ThemeProvider>
+      {/* Render global background outside page transitions to avoid stacking issues */}
+      {!showIntro && <AnimatedBackground />}
       <AnimatePresence mode="wait">
         {showIntro ? (
           <IntroLanding 
@@ -38,7 +40,6 @@ const App = () => {
           />
         ) : (
           <div key="portfolio" className="portfolio-wrapper">
-            <GlobalBackground />
             <div className="app">
               <motion.div
                 initial={{ opacity: 0 }}

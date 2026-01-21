@@ -74,7 +74,7 @@ html {
 }
 
 body {
-  background: var(--bg-main);
+  background: transparent;
   color: var(--text-primary);
   line-height: 1.6;
   overflow-x: hidden;
@@ -82,9 +82,6 @@ body {
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  transform: translateZ(0);
-  backface-visibility: hidden;
-  perspective: 1000px;
   transition: background 0.3s ease, color 0.3s ease;
   margin: 0;
   padding: 0;
@@ -151,13 +148,14 @@ section {
   z-index: 1;
   width: 100%;
   min-height: 100vh;
+  background: transparent;
 }
 
 .portfolio-wrapper {
   position: relative;
   width: 100%;
   min-height: 100vh;
-  background: var(--bg-main);
+  background: transparent;
 }
 
 .container {

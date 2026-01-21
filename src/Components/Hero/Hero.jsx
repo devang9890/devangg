@@ -58,7 +58,7 @@ const Hero = () => {
           <div className="profile-glow"></div>
         </motion.div>
 
-        {/* Text */}
+        {/* Text - Centered Name */}
         <motion.h1 className="hero-title" variants={itemVariants}>
           <span className="gradient-name">Devang Singh</span>
         </motion.h1>
