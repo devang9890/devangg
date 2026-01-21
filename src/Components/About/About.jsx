@@ -2,7 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import './About.css';
 import theme_pattern from '../../assets/theme_pattern.svg';
-import dhruv from '../../assets/dhruv.JPG';
+import dhruv from '../../assets/dhruv.jpg';
 
 const About = () => {
   const frontendSkills = [
