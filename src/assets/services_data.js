@@ -1,40 +1,34 @@
 const Services_Data = [
-    {
-        s_no:"01",
-        s_name:"Web design",
-        s_desc:"Web development is the process of building, programming...",
-        s_full_desc:"Web development is the process of building, programming, and maintaining websites and web applications. It involves both front-end development (what users see and interact with) and back-end development (server-side logic and database management). Modern web development includes responsive design, performance optimization, and user experience considerations."
-    },
-    {
-        s_no:"02",
-        s_name:"Graphics design",
-        s_desc:"Web development is the process of building, programming...",
-        s_full_desc:"Graphic design is the art and practice of planning and projecting ideas and experiences with visual and textual content. It involves creating visual content to communicate messages, including logos, brochures, advertisements, websites, and more. Designers use typography, imagery, color theory, and layout principles to create effective visual communications."
-    },
-    {
-        s_no:"03",
-        s_name:"Social media",
-        s_desc:"Web development is the process of building, programming...",
-        s_full_desc:"Social media management involves creating, curating, and managing content across various social media platforms to build brand awareness and engage with audiences. This includes content strategy, community management, analytics tracking, and paid advertising campaigns to increase reach and drive conversions."
-    },
-    {
-        s_no:"04",
-        s_name:"App design",
-        s_desc:"Web development is the process of building, programming...",
-        s_full_desc:"App design encompasses both UI (User Interface) and UX (User Experience) design for mobile and web applications. It involves creating intuitive, accessible, and visually appealing interfaces that provide seamless user experiences. This includes wireframing, prototyping, user testing, and iterative design processes."
-    },
-    {
-        s_no:"05",
-        s_name:"Digital marketing",
-        s_desc:"Web development is the process of building, programming...",
-        s_full_desc:"Digital marketing encompasses all marketing efforts that use electronic devices or the internet. This includes SEO, content marketing, email marketing, PPC advertising, social media marketing, and affiliate marketing. The goal is to reach customers where they spend most of their time - online."
-    },
-    {
-        s_no:"06",
-        s_name:"Content writing",
-        s_desc:"Web development is the process of building, programming...",
-        s_full_desc:"Content writing involves creating engaging, informative, and valuable content for various platforms including websites, blogs, social media, and marketing materials. This includes SEO-optimized content, copywriting, technical writing, and creative storytelling to attract and retain target audiences."
-    },
-]
- 
+  {
+    s_no: "01",
+    s_name: "Web Development",
+    s_desc: "Building responsive and performant web applications with modern technologies.",
+    s_full_desc: "I specialize in creating dynamic, responsive web applications that work seamlessly across all devices. Using HTML5, CSS3, and JavaScript, I build fast-loading, SEO-friendly websites that engage users and drive results. Every project is optimized for performance, accessibility, and user engagement."
+  },
+  {
+    s_no: "02",
+    s_name: "Full Stack Development",
+    s_desc: "End-to-end development from frontend to backend with database integration.",
+    s_full_desc: "I build complete web solutions combining React, Node.js, Express, and MongoDB/MySQL. From RESTful API development and database design to frontend optimization, I handle the entire stack to create scalable, production-ready applications with seamless integration."
+  },
+  {
+    s_no: "03",
+    s_name: "UI/UX Design",
+    s_desc: "Designing beautiful, intuitive user interfaces focused on user experience.",
+    s_full_desc: "I design user-centered interfaces that are both aesthetically beautiful and highly functional. Using modern design principles and tools, I create digital experiences that users love, combining visual appeal with intuitive interactions to maximize user satisfaction."
+  },
+  {
+    s_no: "04",
+    s_name: "React Development",
+    s_desc: "Building dynamic applications with React, hooks, and state management.",
+    s_full_desc: "Specialized in React.js development with expertise in hooks, Redux state management, and component architecture. I create scalable, maintainable React applications that deliver smooth user experiences, optimal performance, and clean, reusable code."
+  },
+  {
+    s_no: "05",
+    s_name: "Problem Solving",
+    s_desc: "Data Structures & Algorithms expertise for optimized solutions.",
+    s_full_desc: "Strong foundation in DSA with proficiency in solving complex algorithmic problems efficiently. I optimize code for performance and scalability using efficient algorithms and data structures, ensuring robust applications that handle large-scale operations seamlessly."
+  }
+];
+
 export default Services_Data;

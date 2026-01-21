@@ -7,7 +7,7 @@ import Services from './Components/Services/Services'
 import MyWork from './Components/MyWork/MyWork'
 import Contact from './Components/Contact/Contact'
 import Footer from './Components/Footer/Footer'
-import AnimatedBackground from './Components/AnimatedBackground/AnimatedBackground'
+import GlobalBackground from './Components/GlobalBackground/GlobalBackground'
 import IntroLanding from './Components/IntroLanding/IntroLanding'
 import { ThemeProvider } from './context/ThemeContext'
 
@@ -38,7 +38,7 @@ const App = () => {
           />
         ) : (
           <div key="portfolio" className="portfolio-wrapper">
-            <AnimatedBackground />
+            <GlobalBackground />
             <div className="app">
               <motion.div
                 initial={{ opacity: 0 }}

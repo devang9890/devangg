@@ -1,196 +1,243 @@
 .services {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 80px;
-  width: 100%;
-  max-width: 1400px;
-  margin: 0 auto;
-  padding: 0 40px;
-}
-
-.servies-title {
   position: relative;
-  text-align: center;
-  margin-bottom: 60px;
+  padding: 120px 0;
+  width: 100%;
+  overflow: hidden;
+  background: transparent;
 }
 
-.servies-title h1 {
+
+.services-title h1 {
   font-size: 4rem;
-  font-weight: 600;
-  margin-bottom: 20px;
-  background: linear-gradient(90deg, #00eaff, #ff4ecd);
+  font-weight: 800;
+  margin-bottom: 30px;
+  background: var(--accent-gradient);
   -webkit-background-clip: text;
-  color: transparent;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0 0 20px rgba(0, 234, 255, 0.3));
+  animation: titleGlow 3s ease-in-out infinite;
 }
 
-.servies-title img {
+@keyframes titleGlow {
+  0%, 100% { filter: drop-shadow(0 0 20px rgba(0, 234, 255, 0.3)); }
+  50% { filter: drop-shadow(0 0 30px rgba(255, 78, 205, 0.4)); }
+}
+
+.services-title img {
   position: absolute;
-  bottom: -20px;
-  right: 10%;
+  bottom: -40px;
+  left: 50%;
+  transform: translateX(-50%);
   z-index: -1;
-  opacity: 0.3;
+  opacity: 0.4;
 }
 
 .services-container {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 40px;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 30px;
   width: 100%;
-  margin-bottom: 80px;
 }
 
 .services-format {
+  perspective: 1000px;
+  min-height: 400px;
+}
+.service-inner {
+  position: relative;
+  height: 100%;
+  padding: 40px;
+  border-radius: 28px;
+  background: linear-gradient(135deg, rgba(0, 234, 255, 0.08) 0%, rgba(168, 85, 247, 0.08) 50%, rgba(255, 78, 205, 0.08) 100%);
+  border: 2px solid transparent;
+  background-clip: padding-box;
+  backdrop-filter: blur(20px);
+  box-shadow:
+    0 8px 32px rgba(0, 234, 255, 0.1),
+    0 0 60px rgba(168, 85, 247, 0.08),
+    inset 0 0 40px rgba(255, 255, 255, 0.02);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  transform-style: preserve-3d;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  gap: 25px;
-  padding: 50px;
-  border-radius: 22px;
-  border: 1px solid rgba(0, 234, 255, 0.15);
-  transition: 0.4s;
-  cursor: pointer;
-  background: rgba(255, 255, 255, 0.04);
-  backdrop-filter: blur(14px);
-  height: 100%;
-  position: relative;
   overflow: hidden;
 }
 
-.services-format::before {
+.service-inner::before {
   content: '';
   position: absolute;
   top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
-  transition: left 0.6s;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: 28px;
+  padding: 2px;
+  background: linear-gradient(135deg, #00eaff, #a855f7, #ff4ecd);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: -1;
 }
 
-.services-format:hover::before {
-  left: 100%;
+.services-format:hover .service-inner::before {
+  opacity: 1;
 }
 
-.services-format h3 {
-  font-size: 1.5rem;
-  font-weight: 600;
-  color: #00eaff;
+.service-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 150%;
+  height: 150%;
+  background: radial-gradient(circle, rgba(0, 234, 255, 0.2), rgba(168, 85, 247, 0.15), transparent);
+  border-radius: 50%;
+  filter: blur(40px);
+  opacity: 0;
+  z-index: 0;
+  transition: opacity 0.4s ease;
+  animation: glowFloat 6s ease-in-out infinite;
 }
 
-.services-format h2 {
-  font-size: 2.2rem;
-  font-weight: 700;
-  background: linear-gradient(135deg, #00eaff, #ff4ecd);
-  background-clip: text;
+@keyframes glowFloat {
+  0%, 100% { transform: translate(-50%, -50%) scale(1); }
+  50% { transform: translate(-50%, -55%) scale(1.1); }
+}
+
+.services-format:hover .service-glow {
+  opacity: 1;
+}
+
+.service-number {
+  font-size: 3.5rem;
+  font-weight: 900;
+  background: linear-gradient(135deg, #00eaff, #a855f7, #ff4ecd);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  background-clip: text;
+  line-height: 1;
+  margin-bottom: 15px;
+  opacity: 0.8;
 }
 
-.services-format p {
+.service-name {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #e2e8f0;
+  margin-bottom: 15px;
+  position: relative;
+  z-index: 2;
+  letter-spacing: -0.5px;
+}
+
+.service-desc {
+  font-size: 1rem;
   color: #cbd5e1;
-  font-size: 1.1rem;
   line-height: 1.6;
-  max-width: 100%;
+  margin-bottom: 25px;
+  position: relative;
+  z-index: 2;
+  flex-grow: 1;
 }
 
 .service-full-desc {
-  margin-top: 20px;
-  padding-top: 20px;
-  border-top: 1px solid rgba(0, 234, 255, 0.2);
-  animation: fadeIn 0.3s ease-in;
-}
-
-.service-full-desc p {
-  color: #cbd5e1;
-  font-size: 1rem;
-  line-height: 1.6;
-  max-width: 100%;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(-10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-
-.servies-readmore {
-  display: flex;
-  gap: 15px;
-  align-items: center;
-  margin-top: 20px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-  color: #00eaff;
-  font-weight: 500;
-  padding: 12px 20px;
-  border-radius: 25px;
-  background: rgba(0, 234, 255, 0.1);
-  border: 1px solid rgba(0, 234, 255, 0.2);
+  font-size: 0.95rem;
+  color: #94a3b8;
+  line-height: 1.7;
+  margin-bottom: 20px;
   position: relative;
-  overflow: hidden;
+  z-index: 2;
+  background: rgba(0, 234, 255, 0.05);
+  padding: 20px;
+  border-radius: 15px;
+  border-left: 3px solid rgba(0, 234, 255, 0.3);
 }
 
-.servies-readmore:hover {
-  background: rgba(0, 234, 255, 0.15);
-  border-color: rgba(0, 234, 255, 0.4);
+.services-readmore {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  cursor: pointer;
+  position: relative;
+  z-index: 2;
+  margin-top: auto;
 }
 
-.servies-readmore::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-  transition: left 0.5s;
+.services-readmore p {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #00eaff;
+  transition: color 0.3s ease;
+  letter-spacing: 0.5px;
 }
 
-.servies-readmore:hover::before {
-  left: 100%;
-}
-
-.servies-readmore:hover {
-  transform: translateX(5px);
-  color: var(--accent-secondary);
-  background: rgba(180, 21, 255, 0.1);
-  border-color: rgba(180, 21, 255, 0.3);
-  box-shadow: 0 5px 15px rgba(223, 137, 8, 0.3);
-}
-
-.servies-readmore img {
+.services-readmore img {
+  width: 24px;
+  height: 24px;
+  filter: brightness(0) saturate(100%) invert(100%) sepia(76%) saturate(1850%) hue-rotate(162deg);
   transition: transform 0.3s ease;
-  width: 20px;
-  height: 20px;
+}
+
+.services-readmore:hover p {
+  color: #a855f7;
 }
 
 .arrow-rotated {
-  transform: rotate(180deg);
+  transform: rotate(180deg) !important;
 }
 
-.services-format:hover {
-  border: 2px solid #DF8908;
-  background: rgba(255, 255, 255, 0.1);
-  transform: translateY(-5px);
-  box-shadow: 0 15px 35px rgba(223, 137, 8, 0.2);
-  transition: 0.4s;
+/* Hover Effects */
+.services-format:hover .service-inner {
+  background: linear-gradient(135deg, rgba(0, 234, 255, 0.12) 0%, rgba(168, 85, 247, 0.12) 50%, rgba(255, 78, 205, 0.1) 100%);
+  box-shadow:
+    0 12px 48px rgba(0, 234, 255, 0.2),
+    0 0 80px rgba(168, 85, 247, 0.15),
+    inset 0 0 40px rgba(255, 255, 255, 0.05);
 }
 
-/* Responsive design */
-@media (max-width: 1200px) {
-  .services {
-    padding: 0 30px;
-  }
-  
+.services-format:hover .service-name {
+  color: #ffffff;
+}
+
+.gradient-text {
+  background: linear-gradient(135deg, #00eaff 0%, #a855f7 50%, #ff4ecd 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Responsive */
+@media (max-width: 1024px) {
   .services-container {
     grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+  }
+
+  .services-title h1 {
+    font-size: 3.5rem;
+  }
+
+  .service-inner {
+    padding: 35px;
+  }@media (max-width: 1024px) {
+  .services-container {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 25px;
+  }
+
+  .services-title h1 {
+    font-size: 3.5rem;
+  }
+
+  .service-inner {
+    padding: 35px;
+  }
+
+  .service-number {
+    font-size: 3rem;
   }
 }
 
