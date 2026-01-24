@@ -5,7 +5,7 @@ const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  const links = ["Home", "About", "Services", "Portfolio", "Contact"];
+  const links = ["Home", "About", "Services", "Projects", "Contact"];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -32,7 +32,11 @@ const Navbar = () => {
 
         <div className="nav-links">
           {links.map((item) => (
-            <a key={item} href={`#${item.toLowerCase()}`} className="nav-link">
+            <a
+              key={item}
+              href={item === "Projects" ? "#work" : `#${item.toLowerCase()}`}
+              className="nav-link"
+            >
               <span>{item}</span>
               <span>{item}</span>
             </a>
@@ -40,7 +44,7 @@ const Navbar = () => {
         </div>
 
         <div className="nav-actions">
-          <button className="btn-glow">Contact</button>
+          <a href="#contact" className="btn-glow">Contact</a>
         </div>
       </nav>
 
@@ -61,7 +65,7 @@ const Navbar = () => {
           {links.map((item) => (
             <a
               key={item}
-              href={`#${item.toLowerCase()}`}
+              href={item === "Projects" ? "#work" : `#${item.toLowerCase()}`}
               className="menu-link"
               onClick={handleLinkClick}
             >
@@ -69,7 +73,7 @@ const Navbar = () => {
             </a>
           ))}
         </div>
-        <button className="btn-glow menu-cta" onClick={() => setIsMenuOpen(false)}>Contact</button>
+        <a href="#contact" className="btn-glow menu-cta" onClick={() => setIsMenuOpen(false)}>Contact</a>
       </div>
 
       {/* Dark overlay behind menu */}

@@ -233,7 +233,7 @@
 .side-menu {
   position: fixed;
   top: 60px;
-  right: -280px;
+  right: 12px;
   width: 260px;
   padding: 16px;
   background: rgba(5, 8, 20, 0.6);
@@ -241,12 +241,17 @@
   backdrop-filter: blur(16px);
   border-radius: 16px;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3), inset 0 0 30px rgba(0, 234, 255, 0.08);
-  transition: right 0.4s ease, opacity 0.3s ease;
+  transform: translateX(120%);
+  opacity: 0;
+  pointer-events: none;
+  transition: transform 0.4s ease, opacity 0.3s ease;
   z-index: 101;
 }
 
 .side-menu.open {
-  right: 12px;
+  transform: translateX(0);
+  opacity: 1;
+  pointer-events: auto;
 }
 
 .menu-links {
