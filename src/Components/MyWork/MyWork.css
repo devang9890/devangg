@@ -149,7 +149,7 @@
 /* Timeline Grid (Perfect 2-Column) */
 .timeline-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
   gap: 80px;
   align-items: start;
   position: relative;
@@ -734,9 +734,11 @@
 
 /* Responsive Design */
 @media (max-width: 1200px) {
-  .timeline-grid {
-    gap: 30px;
-  }
+  .timeline-grid { gap: 56px; }
+}
+
+@media (max-width: 1024px) {
+  .timeline-grid { gap: 40px; }
 }
 
 @media (max-width: 768px) {
@@ -785,9 +787,7 @@
     width: 100%;
   }
 
-  .card-image-wrapper-premium {
-    height: 200px;
-  }
+  .card-image-wrapper-premium { height: auto; }
 
   .card-content-premium {
     padding: 20px;
@@ -811,9 +811,7 @@
     font-size: 2rem;
   }
 
-  .card-image-wrapper-premium {
-    height: 180px;
-  }
+  .card-image-wrapper-premium { height: auto; }
 
   .text-deck-premium {
     padding: 20px;
