@@ -7,7 +7,7 @@ import Services from './Components/Services/Services'
 import MyWork from './Components/MyWork/MyWork'
 import Contact from './Components/Contact/Contact'
 import Footer from './Components/Footer/Footer'
-import AnimatedBackground from './Components/AnimatedBackground/AnimatedBackground'
+import ParticlesBackground from './Components/ParticlesBackground'
 import IntroLanding from './Components/IntroLanding/IntroLanding'
 import { ThemeProvider } from './context/ThemeContext'
 
@@ -29,8 +29,8 @@ const App = () => {
 
   return (
     <ThemeProvider>
-      {/* Render global background outside page transitions to avoid stacking issues */}
-      {!showIntro && <AnimatedBackground />}
+      {/* Global particles background runs for entire app */}
+      <ParticlesBackground />
       <AnimatePresence mode="wait">
         {showIntro ? (
           <IntroLanding 
@@ -39,8 +39,8 @@ const App = () => {
             onExit={handleExitPortfolio}
           />
         ) : (
-          <div key="portfolio" className="portfolio-wrapper">
-            <div className="app">
+          <div key="portfolio" className="relative w-full min-h-screen overflow-x-hidden text-white">
+            <div className="relative z-10">
               <motion.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}

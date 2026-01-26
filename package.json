@@ -15,6 +15,7 @@
   "dependencies": {
     "framer-motion": "^10.18.0",
     "gsap": "^3.12.5",
+    "ogl": "^1.0.11",
     "react": "^18.2.0",
     "react-anchor-link-smooth-scroll": "^1.0.12",
     "react-dom": "^18.2.0"
