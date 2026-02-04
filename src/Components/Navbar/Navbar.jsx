@@ -9,7 +9,7 @@ const Navbar = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      setIsScrolled(window.scrollY > 100);
+      setIsScrolled(window.scrollY > 50);
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
@@ -22,10 +22,8 @@ const Navbar = () => {
   return (
     <>
       {/* Top Navbar - Default State */}
-      <nav className={`navbar navbar-top ${isScrolled ? "navbar-hidden" : "navbar-visible"}`}>
+      <nav className={`navbar navbar-top ${isScrolled ? "navbar-scrolled" : "navbar-default"}`}>
         <div className="nav-logo">
-          <span className="dot" />
-          <span className="dot" />
           <span className="dot" />
           <span className="dot" />
         </div>
@@ -38,13 +36,12 @@ const Navbar = () => {
               className="nav-link"
             >
               <span>{item}</span>
-              <span>{item}</span>
             </a>
           ))}
         </div>
 
         <div className="nav-actions">
-          <a href="#contact" className="btn-glow">Contact</a>
+          <a href="#contact" className="btn-contact">Contact</a>
         </div>
       </nav>
 

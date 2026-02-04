@@ -8,45 +8,43 @@ import MyWork from './Components/MyWork/MyWork'
 import Contact from './Components/Contact/Contact'
 import Footer from './Components/Footer/Footer'
 import ParticlesBackground from './Components/ParticlesBackground'
-import IntroLanding from './Components/IntroLanding/IntroLanding'
+import LoadingScreen from './Components/LoadingScreen/LoadingScreen'
 import { ThemeProvider } from './context/ThemeContext'
 
 const App = () => {
-  const [showIntro, setShowIntro] = useState(() => {
-    // Check if user has already seen intro in this session
-    return !sessionStorage.getItem('introSeen')
+  const [showLoader, setShowLoader] = useState(() => {
+    // Check if user has already seen loader in this session
+    return !sessionStorage.getItem('loaderSeen')
   })
 
-  const handleEnterPortfolio = () => {
-    sessionStorage.setItem('introSeen', 'true')
-    setShowIntro(false)
-  }
-
-  const handleExitPortfolio = () => {
-    // Optionally close the window or redirect
-    window.close()
+  const handleLoadComplete = () => {
+    sessionStorage.setItem('loaderSeen', 'true')
+    setShowLoader(false)
   }
 
   return (
     <ThemeProvider>
-      {/* Global particles background runs for entire app */}
-      <ParticlesBackground />
+      {/* Global particles background - hidden during loader */}
+      <div style={{ opacity: showLoader ? 0 : 1, transition: 'opacity 0.8s ease-out' }}>
+        <ParticlesBackground />
+      </div>
+
       <AnimatePresence mode="wait">
-        {showIntro ? (
-          <IntroLanding 
-            key="intro"
-            onEnter={handleEnterPortfolio}
-            onExit={handleExitPortfolio}
+        {showLoader ? (
+          <LoadingScreen 
+            key="loader"
+            onLoadComplete={handleLoadComplete}
           />
         ) : (
-          <div key="portfolio" className="relative w-full min-h-screen overflow-x-hidden text-white">
+          <motion.div 
+            key="portfolio" 
+            className="relative w-full min-h-screen overflow-x-hidden text-white"
+            initial={{ opacity: 0, scale: 0.98 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.8, ease: 'easeOut' }}
+          >
             <div className="relative z-10">
-              <motion.div
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 1 }}
-                className="container"
-              >
+              <div className="container">
                 <Navbar/>
                 <Hero/>
                 <About/>
@@ -54,9 +52,9 @@ const App = () => {
                 <MyWork/>
                 <Contact/>
                 <Footer/>
-              </motion.div>
+              </div>
             </div>
-          </div>
+          </motion.div>
         )}
       </AnimatePresence>
     </ThemeProvider>

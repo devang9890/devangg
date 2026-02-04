@@ -3,46 +3,44 @@ import { motion } from 'framer-motion';
 import './About.css';
 import theme_pattern from '../../assets/theme_pattern.svg';
 import dhruv from '../../assets/dhruv.jpg';
+import TechIcons from '../../utils/TechIcons';
 
 const About = () => {
   const frontendSkills = [
-    { name: 'React', icon: '⚛️', color: '#61DAFB' },
-    { name: 'Next.js', icon: '⚫', color: '#000000' },
-    { name: 'JavaScript', icon: '🟡', color: '#F7DF1E' },
-    { name: 'TypeScript', icon: '🔵', color: '#3178C6' },
-    { name: 'HTML5', icon: '🟠', color: '#E34F26' },
-    { name: 'Tailwind CSS', icon: '🔷', color: '#06B6D4' }
+    { name: 'React', icon: TechIcons.React, color: '#61DAFB' },
+    { name: 'Next.js', icon: TechIcons["Next.js"], color: '#000000' },
+    { name: 'JavaScript', icon: TechIcons.JavaScript, color: '#F7DF1E' },
+    { name: 'TypeScript', icon: TechIcons.TypeScript, color: '#3178C6' },
+    { name: 'HTML5', icon: TechIcons.HTML5, color: '#E34F26' },
+    { name: 'Tailwind CSS', icon: TechIcons["Tailwind CSS"], color: '#06B6D4' }
   ];
 
   const backendSkills = [
-    { name: 'Node.js', icon: '🟢', color: '#339933' },
-    { name: 'Express.js', icon: '⚪', color: '#000000' },
-    { name: 'Python', icon: '🐍', color: '#3776AB' },
-    { name: 'Java', icon: '☕', color: '#ED8B00' },
-    { name: 'C++', icon: '🔷', color: '#00599C' }
+    { name: 'Node.js', icon: TechIcons["Node.js"], color: '#339933' },
+    { name: 'Express.js', icon: TechIcons["Express.js"], color: '#000000' },
+    { name: 'Python', icon: TechIcons.Python, color: '#3776AB' },
+    { name: 'Java', icon: TechIcons.Java, color: '#ED8B00' },
+    { name: 'C++', icon: TechIcons["C++"], color: '#00599C' }
   ];
 
-  // ✅ NEW: Databases
   const databaseSkills = [
-    { name: 'MongoDB', icon: '🍃', color: '#47A248' },
-    { name: 'MySQL', icon: '🐬', color: '#4479A1' },
-    { name: 'Supabase', icon: '🟩', color: '#3ECF8E' }
+    { name: 'MongoDB', icon: TechIcons.MongoDB, color: '#47A248' },
+    { name: 'MySQL', icon: TechIcons.MySQL, color: '#4479A1' },
+    { name: 'Supabase', icon: TechIcons.Supabase, color: '#3ECF8E' }
   ];
 
-  // ✅ NEW: Data Science & ML
   const mlSkills = [
-    { name: 'NumPy', icon: '📦', color: '#013243' },
-    { name: 'Pandas', icon: '🐼', color: '#150458' },
-    { name: 'Matplotlib', icon: '📊', color: '#11557C' },
-    { name: 'Seaborn', icon: '🌊', color: '#4C72B0' },
-    { name: 'Scikit-Learn', icon: '🤖', color: '#F7931E' }
+    { name: 'NumPy', icon: TechIcons.NumPy, color: '#013243' },
+    { name: 'Pandas', icon: TechIcons.Pandas, color: '#150458' },
+    { name: 'Matplotlib', icon: TechIcons.Matplotlib, color: '#11557C' },
+    { name: 'Seaborn', icon: TechIcons.Seaborn, color: '#4C72B0' },
+    { name: 'Scikit-Learn', icon: TechIcons["Scikit-Learn"], color: '#F7931E' }
   ];
 
-  // ✅ NEW: Developer Tools
   const devTools = [
-    { name: 'Git', icon: '🔶', color: '#F05032' },
-    { name: 'GitHub', icon: '🐙', color: '#181717' },
-    { name: 'Firebase', icon: '🔥', color: '#FFCA28' }
+    { name: 'Git', icon: TechIcons.Git, color: '#F05032' },
+    { name: 'GitHub', icon: TechIcons.GitHub, color: '#181717' },
+    { name: 'Firebase', icon: TechIcons.Firebase, color: '#FFCA28' }
   ];
 
   const containerVariants = {
@@ -148,7 +146,9 @@ const About = () => {
                     whileHover={{ scale: 1.1, y: -5 }}
                     whileTap={{ scale: 0.95 }}
                   >
-                    <span className="skill-icon">{skill.icon}</span>
+                    <div className="skill-icon-wrapper">
+                      <skill.icon className="skill-svg-icon" />
+                    </div>
                     <span className="skill-name">{skill.name}</span>
                   </motion.div>
                 ))}
@@ -174,7 +174,9 @@ const About = () => {
                     whileHover={{ scale: 1.1, y: -5 }}
                     whileTap={{ scale: 0.95 }}
                   >
-                    <span className="skill-icon">{skill.icon}</span>
+                    <div className="skill-icon-wrapper">
+                      <skill.icon className="skill-svg-icon" />
+                    </div>
                     <span className="skill-name">{skill.name}</span>
                   </motion.div>
                 ))}
@@ -200,7 +202,9 @@ const About = () => {
                     whileHover={{ scale: 1.1, y: -5 }}
                     whileTap={{ scale: 0.95 }}
                   >
-                    <span className="skill-icon">{skill.icon}</span>
+                    <div className="skill-icon-wrapper">
+                      <skill.icon className="skill-svg-icon" />
+                    </div>
                     <span className="skill-name">{skill.name}</span>
                   </motion.div>
                 ))}
@@ -226,7 +230,9 @@ const About = () => {
                     whileHover={{ scale: 1.1, y: -5 }}
                     whileTap={{ scale: 0.95 }}
                   >
-                    <span className="skill-icon">{skill.icon}</span>
+                    <div className="skill-icon-wrapper">
+                      <skill.icon className="skill-svg-icon" />
+                    </div>
                     <span className="skill-name">{skill.name}</span>
                   </motion.div>
                 ))}
@@ -252,7 +258,9 @@ const About = () => {
                     whileHover={{ scale: 1.1, y: -5 }}
                     whileTap={{ scale: 0.95 }}
                   >
-                    <span className="skill-icon">{skill.icon}</span>
+                    <div className="skill-icon-wrapper">
+                      <skill.icon className="skill-svg-icon" />
+                    </div>
                     <span className="skill-name">{skill.name}</span>
                   </motion.div>
                 ))}
