@@ -74,15 +74,15 @@ const Navbar = () => {
       <div className={`side-menu ${isMenuOpen ? "open" : ""}`}>
         <div className="menu-header">
           <span className="menu-title">Navigation</span>
-        </div>sectionId = item === "Projects" ? "work" : item.toLowerCase();
+        </div>
+        <div className="menu-links">
+          {links.map((item, index) => {
+            const sectionId = item === "Projects" ? "work" : item.toLowerCase();
             const isActive = activeSection === sectionId;
             return (
               <a
                 key={item}
                 href={`#${sectionId}`}
-                className={`menu-link ${isActive ? "active" : ""}`}
-                onClick={() => setIsMenuOpen(false)
-                href={item === "Projects" ? "#work" : `#${item.toLowerCase()}`}
                 className={`menu-link ${isActive ? "active" : ""}`}
                 onClick={handleLinkClick}
                 style={{ animationDelay: `${index * 0.05}s` }}
