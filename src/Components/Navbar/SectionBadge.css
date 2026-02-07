@@ -1,0 +1,125 @@
+/* ===== FLOATING SECTION BADGE ===== */
+.section-badge {
+  position: fixed;
+  top: 20px;
+  left: 20px;
+  z-index: 100;
+  
+  /* Premium glassmorphism */
+  background: rgba(15, 23, 42, 0.75);
+  border: 1.5px solid transparent;
+  backdrop-filter: blur(24px) saturate(180%);
+  border-radius: 20px;
+  padding: 10px 20px;
+  
+  /* Gradient border */
+  background-image: 
+    linear-gradient(135deg, rgba(15, 23, 42, 0.75), rgba(15, 23, 42, 0.75)),
+    linear-gradient(135deg, rgba(34, 211, 238, 0.3), rgba(168, 85, 247, 0.3));
+  background-origin: border-box;
+  background-clip: padding-box, border-box;
+  
+  box-shadow: 
+    0 0 0 1px rgba(34, 211, 238, 0.15) inset,
+    0 8px 32px rgba(0, 0, 0, 0.5),
+    0 0 40px rgba(34, 211, 238, 0.15);
+  
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.section-badge:hover {
+  transform: translateY(-2px);
+  box-shadow: 
+    0 0 0 1px rgba(34, 211, 238, 0.25) inset,
+    0 12px 40px rgba(0, 0, 0, 0.6),
+    0 0 60px rgba(34, 211, 238, 0.25);
+}
+
+.badge-content {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  position: relative;
+  z-index: 2;
+}
+
+.badge-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #22d3ee, #a855f7);
+  box-shadow: 0 0 16px rgba(34, 211, 238, 0.8);
+  animation: badge-pulse 2s ease-in-out infinite;
+}
+
+@keyframes badge-pulse {
+  0%, 100% { 
+    opacity: 1;
+    transform: scale(1);
+    box-shadow: 0 0 16px rgba(34, 211, 238, 0.8);
+  }
+  50% { 
+    opacity: 0.8;
+    transform: scale(1.15);
+    box-shadow: 0 0 24px rgba(168, 85, 247, 1);
+  }
+}
+
+.badge-label {
+  font-size: 14px;
+  font-weight: 700;
+  color: #22d3ee;
+  letter-spacing: 0.5px;
+  text-shadow: 0 0 20px rgba(34, 211, 238, 0.3);
+}
+
+.badge-glow {
+  position: absolute;
+  inset: -4px;
+  border-radius: 20px;
+  background: linear-gradient(135deg, rgba(34, 211, 238, 0.2), rgba(168, 85, 247, 0.2));
+  opacity: 0;
+  filter: blur(12px);
+  transition: opacity 0.3s ease;
+  z-index: 1;
+}
+
+.section-badge:hover .badge-glow {
+  opacity: 0.6;
+}
+
+/* ===== RESPONSIVE ===== */
+@media (max-width: 768px) {
+  .section-badge {
+    top: 16px;
+    left: 16px;
+    padding: 8px 16px;
+  }
+
+  .badge-label {
+    font-size: 13px;
+  }
+
+  .badge-dot {
+    width: 7px;
+    height: 7px;
+  }
+}
+
+@media (max-width: 480px) {
+  .section-badge {
+    top: 14px;
+    left: 14px;
+    padding: 7px 14px;
+  }
+
+  .badge-label {
+    font-size: 12px;
+  }
+
+  .badge-dot {
+    width: 6px;
+    height: 6px;
+  }
+}
