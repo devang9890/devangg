@@ -1,5 +1,5 @@
 import project1_img from '../assets/project_1.svg'
-import project2_img from '../assets/project_2.svg'
+import project2_img from '../assets/medlink.png'
 import project3_img from '../assets/project_3.svg'
 import project4_img from '../assets/project_4.svg'
 import project5_img from '../assets/project_5.svg'
@@ -8,19 +8,19 @@ import project6_img from '../assets/project_6.svg'
 const mywork_data = [
     {
         w_no:1,
-        w_name:"E-commerce Website",
+        w_name:"AI Dumb ↔ Smart Translator",
         w_img:project1_img,
-        w_desc:"A full-stack e-commerce platform with user authentication, product catalog, shopping cart, and payment integration.",
-        live_url:"https://example-ecommerce.com",
-        github_url:"https://github.com/username/ecommerce-project"
+        w_desc:"Transform any text into different communication styles instantly with DUMB - the ultimate text transformation tool for fun and creativity.",
+        live_url:"https://dumbass-umber.vercel.app/",
+        github_url:"https://github.com/devang9890/DUMB"
     },
     {
         w_no:2,
-        w_name:"Portfolio Website",
+        w_name:"MEDLINK",
         w_img:project2_img,
-        w_desc:"A responsive portfolio website showcasing skills, projects, and professional experience with modern design.",
-        live_url:"https://example-portfolio.com",
-        github_url:"https://github.com/username/portfolio-project"
+        w_desc:"MedLink is a smart healthcare platform that connects patients and doctors through seamless appointment booking, real-time availability, and digital medical interactions.",
+        live_url:"https://medlink-omega.vercel.app/",
+        github_url:"https://github.com/devang9890/MEDLINK"
     },
     {
         w_no:3,
