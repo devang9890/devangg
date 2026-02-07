@@ -1,6 +1,6 @@
 import project1_img from '../assets/dumb.png'
 import project2_img from '../assets/medlink.png'
-import project3_img from '../assets/project_3.svg'
+import project3_img from '../assets/student.png'
 import project4_img from '../assets/project_4.svg'
 import project5_img from '../assets/project_5.svg'
 import project6_img from '../assets/project_6.svg'
@@ -45,15 +45,15 @@ export const projectsData = [
     },
     {
         id: 3,
-        title: "Task Management App",
-        description: "A collaborative task management application with real-time updates, team features, and progress tracking for productive teams.",
+        title: "AI-Driven-Student-Analytics",
+        description: "AI-Driven-Student-Analytics uses machine learning to analyze student data, identify performance patterns, and predict at‑risk outcomes. It likely provides interactive dashboards and actionable insights for educators and administrators.",
         image: project3_img,
-        techStack: ["React", "Firebase", "Redux", "Tailwind CSS"],
-        projectType: "Full Stack",
-        completedYear: "2025",
+        techStack: ["React", "Redux", "Tailwind CSS", "Node.js", "Express", "Chart.js", "Flask", "pandas", "NumPy", "scikit-learn", "MongoDB"],
+        projectType: "Full Stack + AI",
+        completedYear: "2026",
         status: "Live",
-        githubLink: "https://github.com/username/task-app",
-        liveLink: "https://example-taskapp.com",
+        githubLink: "https://github.com/devang9890/AI-Driven-Student-Analytics",
+        liveLink: "https://ai-driven-student-analytics.vercel.app/",
         features: [
             "Team collaboration",
             "Real-time updates",
