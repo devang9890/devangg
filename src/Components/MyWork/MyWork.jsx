@@ -2,14 +2,14 @@ import React, { useState, useMemo } from 'react'
 import { LazyMotion, domAnimation, m, useReducedMotion } from 'framer-motion'
 import './MyWork.css'
 import theme_pattern from "../../assets/theme_pattern.svg"
-import mywork_data from '../../assets/mywork_data'
+import { projectsData } from '../../assets/projectsData'
 
 const MyWork = () => {
   const [showAllProjects, setShowAllProjects] = useState(false);
   const prefersReducedMotion = useReducedMotion();
 
   const displayedProjects = useMemo(
-    () => (showAllProjects ? mywork_data : mywork_data.slice(0, 6)),
+    () => (showAllProjects ? projectsData : projectsData.slice(0, 6)),
     [showAllProjects]
   );
 
@@ -168,7 +168,7 @@ const MyWork = () => {
         </div>
 
         {/* Show More Button */}
-        {mywork_data.length > 6 && (
+        {projectsData.length > 6 && (
           <m.div
             className="mywork-showmore-wrapper"
             initial={{ opacity: 0, y: 20 }}
@@ -218,8 +218,8 @@ const ProjectCardComponent = ({ work, variants }) => {
       {/* Image */}
       <div className="card-image-wrapper-premium">
         <img 
-          src={work.w_img} 
-          alt={work.w_name}
+          src={work.image} 
+          alt={work.title}
           className="card-image-premium"
           loading="lazy"
           decoding="async"
@@ -231,19 +231,19 @@ const ProjectCardComponent = ({ work, variants }) => {
 
       {/* Content */}
       <div className="card-content-premium">
-        <h3 className="card-title-premium">{work.w_name}</h3>
-        <p className="card-description-premium">{work.w_desc}</p>
+        <h3 className="card-title-premium">{work.title}</h3>
+        <p className="card-description-premium">{work.description}</p>
 
         {/* Action Buttons */}
         <div className="card-actions-premium">
           <m.a
-            href={work.github_url}
+            href={work.githubLink}
             target="_blank"
             rel="noopener noreferrer"
             className="card-btn-premium btn-github-premium"
             whileHover={{ scale: 1.05, y: -2 }}
             whileTap={{ scale: 0.95 }}
-            aria-label={`Open GitHub for ${work.w_name}`}
+            aria-label={`Open GitHub for ${work.title}`}
           >
             <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
               <path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.015 12.015 0 0 0 24 12c0-6.63-5.37-12-12-12z"/>
@@ -252,13 +252,13 @@ const ProjectCardComponent = ({ work, variants }) => {
           </m.a>
 
           <m.a
-            href={work.live_url}
+            href={work.liveLink}
             target="_blank"
             rel="noopener noreferrer"
             className="card-btn-premium btn-demo-premium"
             whileHover={{ scale: 1.05, y: -2 }}
             whileTap={{ scale: 0.95 }}
-            aria-label={`Open Live Demo for ${work.w_name}`}
+            aria-label={`Open Live Demo for ${work.title}`}
           >
             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
               <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path>
@@ -275,8 +275,12 @@ const ProjectCardComponent = ({ work, variants }) => {
 
 // Text Deck Component (AI Summary Panel)
 const TextDeckComponent = ({ work, variants }) => {
-  // Mock tech stack if not in data
+  // Dynamic tech stack from project data
   const techStack = work.techStack || ['React', 'Node.js', 'MongoDB', 'Tailwind'];
+  const projectType = work.projectType || 'Full Stack';
+  const completedYear = work.completedYear || '2024';
+  const status = work.status || 'Live';
+  const isLive = status === 'Live';
   
   return (
     <m.div
@@ -322,7 +326,7 @@ const TextDeckComponent = ({ work, variants }) => {
 
         {/* Stats Cards */}
         <div className="stats-section">
-          {/* Project Number */}
+          {/* Project Type */}
           <m.div
             className="stat-card"
             initial={{ opacity: 0, x: -20 }}
@@ -339,11 +343,11 @@ const TextDeckComponent = ({ work, variants }) => {
             </div>
             <div className="stat-info">
               <p className="stat-label">Project Type</p>
-              <p className="stat-value">Full Stack</p>
+              <p className="stat-value">{projectType}</p>
             </div>
           </m.div>
 
-          {/* Duration */}
+          {/* Completion Year */}
           <m.div
             className="stat-card"
             initial={{ opacity: 0, x: -20 }}
@@ -360,7 +364,7 @@ const TextDeckComponent = ({ work, variants }) => {
             </div>
             <div className="stat-info">
               <p className="stat-label">Completed</p>
-              <p className="stat-value">2024</p>
+              <p className="stat-value">{completedYear}</p>
             </div>
           </m.div>
 
@@ -382,13 +386,15 @@ const TextDeckComponent = ({ work, variants }) => {
             <div className="stat-info-with-pulse">
               <div>
                 <p className="stat-label">Status</p>
-                <p className="stat-value stat-value-live">Live</p>
+                <p className={`stat-value ${isLive ? 'stat-value-live' : 'stat-value-progress'}`}>{status}</p>
               </div>
-              <m.div
-                className="status-pulse"
-                animate={{ scale: [1, 1.2, 1] }}
-                transition={{ duration: 2, repeat: Infinity }}
-              ></m.div>
+              {isLive && (
+                <m.div
+                  className="status-pulse"
+                  animate={{ scale: [1, 1.2, 1] }}
+                  transition={{ duration: 2, repeat: Infinity }}
+                ></m.div>
+              )}
             </div>
           </m.div>
         </div>

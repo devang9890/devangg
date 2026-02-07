@@ -685,6 +685,10 @@
   color: #22c55e;
 }
 
+.stat-value-progress {
+  color: #f59e0b;
+}
+
 .status-pulse {
   width: 12px;
   height: 12px;
