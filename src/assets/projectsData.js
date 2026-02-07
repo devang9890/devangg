@@ -1,7 +1,7 @@
 import project1_img from '../assets/dumb.png'
 import project2_img from '../assets/medlink.png'
 import project3_img from '../assets/student.png'
-import project4_img from '../assets/project_4.svg'
+import project4_img from '../assets/resume.png'
 import project5_img from '../assets/project_5.svg'
 import project6_img from '../assets/project_6.svg'
 
@@ -64,15 +64,15 @@ export const projectsData = [
     },
     {
         id: 4,
-        title: "Weather Dashboard",
-        description: "A weather application with location-based forecasts, interactive maps, and detailed weather analytics with hourly updates.",
+        title: "AI Resume Builder",
+        description: "An AI-powered resume builder that helps users create professional resumes with personalized suggestions and formatting options.",
         image: project4_img,
-        techStack: ["React", "OpenWeather API", "Leaflet.js", "Tailwind CSS"],
-        projectType: "Frontend",
-        completedYear: "2024",
+        techStack: ["React", "Tailwind CSS" , "Node.js", "Express", "MongoDB", "JSON" , "Gemini API"],
+        projectType: "Full Stack + AI",
+        completedYear: "2025",
         status: "Live",
-        githubLink: "https://github.com/username/weather-app",
-        liveLink: "https://example-weather.com",
+        githubLink: "https://github.com/devang9890/resume",
+        liveLink: "https://resume-tau-orpin-92.vercel.app/",
         features: [
             "Location-based forecasts",
             "Interactive maps",
