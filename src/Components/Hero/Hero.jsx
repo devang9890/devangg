@@ -2,6 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import "./Hero.css";
 import dhruv from "../../assets/dhruv.jpg";
+import pfp from "../../assets/pfp.jpg";
 import resume from "../../assets/resume.pdf";
 import AnchorLink from "react-anchor-link-smooth-scroll";
 
@@ -19,7 +20,7 @@ const Hero = () => {
           whileHover={{ scale: 1.04 }}
         >
           <div className="profile-glow" />
-          <img src={dhruv} alt="Devang Singh" className="hero-img" />
+          <img src={pfp} alt="Devang Singh" className="hero-img" />
         </motion.div>
 
         {/* TEXT CONTENT */}
