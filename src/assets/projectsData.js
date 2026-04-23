@@ -2,8 +2,8 @@ import project1_img from '../assets/dumb.png'
 import project2_img from '../assets/medlink.png'
 import project3_img from '../assets/student.png'
 import project4_img from '../assets/resume.png'
-import project5_img from '../assets/project_5.svg'
-import project6_img from '../assets/project_6.svg'
+import project5_img from '../assets/documind.png'
+import project6_img from '../assets/nova.png'
 
 export const projectsData = [
     {
@@ -83,15 +83,15 @@ export const projectsData = [
     },
     {
         id: 5,
-        title: "Blog Platform",
-        description: "A content management system for blogs with rich text editor, user roles, and SEO optimization features for modern bloggers.",
+        title: "DocuMind AI",
+        description: "DocuMind AI is an intelligent document management system that uses natural language processing to categorize, summarize, and retrieve documents efficiently. It likely offers features like document tagging, search functionality, and integration with cloud storage services.",
         image: project5_img,
-        techStack: ["React", "Node.js", "MongoDB", "Quill", "JWT Auth"],
+        techStack: ["RAG", "LangChain", "FAISS", "React", "Node.js", "MongoDB", ],
         projectType: "Full Stack",
-        completedYear: "2024",
+        completedYear: "2026",
         status: "Live",
-        githubLink: "https://github.com/username/blog-platform",
-        liveLink: "https://example-blog.com",
+        githubLink: "https://github.com/devang9890/Documind",
+        liveLink: "https://documind-beta-nine.vercel.app/",
         features: [
             "Rich text editor",
             "User authentication",
@@ -102,15 +102,15 @@ export const projectsData = [
     },
     {
         id: 6,
-        title: "Social Media Clone",
-        description: "A social networking platform with user profiles, posts, comments, likes, and real-time messaging capabilities.",
+        title: "NOVA DRIVE ",
+        description: "A futuristic social media platform that combines immersive 3D environments with real-time interactions, allowing users to connect, share, and explore in a visually stunning digital universe.",
         image: project6_img,
-        techStack: ["React", "Node.js", "PostgreSQL", "Socket.io", "Tailwind CSS"],
+        techStack: ["THREE.JS", "React", "Node.js", "PostgreSQL", "Socket.io", "Tailwind CSS"],
         projectType: "Full Stack",
-        completedYear: "2025",
+        completedYear: "2026",
         status: "In Progress",
-        githubLink: "https://github.com/username/social-clone",
-        liveLink: "https://example-social.com",
+        githubLink: "https://github.com/devang9890/novadrive",
+        liveLink: "https://novadrive-orpin.vercel.app/",
         features: [
             "User profiles",
             "Post creation & sharing",
